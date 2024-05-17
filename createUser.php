@@ -1,48 +1,52 @@
 <?php
+// 開啟錯誤訊息
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // ******** update your personal settings ******** 
-$servername = "192.168.0.102";
-$username = "test";
-$password = "1234";
-$dbname = "msm";
+$servername = "140.122.184.129:3310";
+$username = "team20";
+$password = "5EGyOY_grkiT[U0j";
+$dbname = "team20";
 
-// Connecting to and selecting a MySQL database
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if (isset($_POST['fullname']) && isset($_POST['account']) && isset($_POST['password']) && isset($_POST['comfirm_password'])) {
+        $checkId_sql = 'SELECT MAX(id) AS maxNum FROM login';
+        $check_result = $pdo->query($checkId_sql);
+        $row = $check_result->fetch(PDO::FETCH_ASSOC);
+        $maxNum = $row['maxNum'] + 1;
 
-if (!$conn->set_charset("utf8")) {
-    printf("Error loading character set utf8: %s\n", $conn->error);
-    exit();
+        $Fullname = $_POST['fullname'];
+        $Account = $_POST['account'];
+        $Password = $_POST['password'];
+
+        $stmt = $pdo->prepare("INSERT INTO login (id, account, password, fullname) VALUES (?, ?, ?, ?)");
+        if ($stmt) {
+            //綁定參數
+            $stmt->bindParam(1, $maxNum, PDO::PARAM_INT);
+            $stmt->bindParam(2, $Account, PDO::PARAM_STR);
+            $stmt->bindParam(3, $Password, PDO::PARAM_STR);
+            $stmt->bindParam(4, $Fullname, PDO::PARAM_STR);
+            
+            if ($stmt->execute()) {
+                echo "新增成功!!<br> <a href='login.html'>返回主頁</a>";
+                exit;
+            } 
+            $stmt->closeCursor();
+        } 
+    } else {
+        echo "資料不完全";
+    }
+} catch(PDOException $e) {
+    $errorMessage = $e->getMessage(); 
+    if (strpos($errorMessage, "Duplicate account") !== false) {
+        echo "此帳號已經存在！請重新填寫！<br> ";
+		echo "<a href='javascript:history.back()'>返回上一頁</a>";
+    } else {
+        // others
+    }
 }
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-if (isset($_POST['account']) && isset($_POST['password'])) {
-	$checkId_sql = 'select max(id) as maxNum from login'
-	$check_result = $conn->query($checkId_sql);
-	$row = $check_result->fetch_assoc();
-	$maxNum = $row['maxNum']+1;
-	$Fullname = $_POST['fullname'];
-	$Account = $_POST['account'];
-	$Password = $_POST['password'];
-	$Comfirm = $_POST['comfirm_password'];
-
-	$create_sql = "insert into login (id,account,password,name) values ('$maxNum','$Account','$Password','$Fullname')";	
-	
-	if ($conn->query($create_sql) === TRUE) {
-		echo "新增成功!!<br> <a href='login.html'>返回主頁</a>";
-		// 重定向用戶到下一頁
-		//header('Location: index.php');
-		exit;
-	} else {
-		echo "<h2 align='center'><font color='antiquewith'>新增失敗!!</font></h2>";
-	}
-
-}else{
-	echo "資料不完全";
-}
-				
+$pdo = null;
 ?>
-
