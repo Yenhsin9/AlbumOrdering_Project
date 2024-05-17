@@ -56,7 +56,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-12">
             <nav class="main-nav">
               <!-- ***** Logo Start ***** -->
-              <a href="index.html" class="logo">
+              <a href="mainpage.php" class="logo">
                 <img src="assets/images/logo.jpg" width="150" />
               </a>
               <!-- ***** Logo End ***** -->
@@ -80,6 +80,39 @@ https://templatemo.com/tm-571-hexashop
                 <li class="scroll-to-section"><a href="#kids">會員中心</a></li>
                 <li class="scroll-to-section">
                   <a href="#footer">連絡我們</a>
+                </li>
+                <li class="scroll-to-section">
+                  <?php
+                    if ($_POST['account']) {
+                      $Account = $_POST['account'];
+                      // ******** update your personal settings ******** 
+                      $servername = "140.122.184.129:3310";
+                      $username = "team20";
+                      $password = "5EGyOY_grkiT[U0j";
+                      $dbname = "team20";
+
+                      // Connecting to and selecting a MySQL database
+                      $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                      if (!$conn->set_charset("utf8")) {
+                          printf("Error loading character set utf8: %s\n", $conn->error);
+                          exit();
+                      }
+
+                      // Check connection
+                      if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                      } 
+
+                      $FindName_sql = "SELECT fullname FROM login WHERE account = '$Account'";
+                      $FindName_result = $conn->query($FindName_sql);
+                      $row = $FindName_result->fetch_assoc();
+                      $Fullname = $row['fullname'];
+                      echo "<a >Hi, $Fullname</a>";
+                    }else{
+                      echo 'nothing';
+                    }
+                  ?>
                 </li>
               </ul>
               <a class="menu-trigger">
@@ -734,7 +767,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-3">
             <h4>常見問題(FAQ)</h4>
             <ul>
-              <li><a href="contact.html">Click here</a></li>
+              <li><a href="questionpage.html">Click here</a></li>
             </ul>
           </div>
           <div class="col-lg-3">

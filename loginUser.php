@@ -17,7 +17,6 @@ if (!$conn->set_charset("utf8")) {
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
 if (isset($_POST['account']) && isset($_POST['password'])) {
 	$Account = $_POST['account'];
 	$Password = $_POST['password'];
@@ -32,7 +31,12 @@ if (isset($_POST['account']) && isset($_POST['password'])) {
         echo "密碼或帳號錯誤<br> <a href='login.html'>返回主頁</a>";
     }
     else{
-        header('Location: mainpage.html');
+        echo '<form id="redirectForm" action="mainpage.php" method="post">
+        <input type="hidden" name="account" value="' . $Account . '" />
+        </form>';
+        echo '<script>
+              document.getElementById("redirectForm").submit();
+          </script>';
     }
 
 }else{
