@@ -47,50 +47,49 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="index.html">Men's</a></li>
-                            <li class="scroll-to-section"><a href="index.html">Women's</a></li>
-                            <li class="scroll-to-section"><a href="index.html">Kid's</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                        </ul>        
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+          <div class="row">
+            <div class="col-12">
+              <nav class="main-nav">
+                <!-- ***** Logo Start ***** -->
+                <!-- <a href="mainpage.php" class="logo"> -->
+                  <img src="assets/images/logo.jpg" width="150" />
+                </a>
+                <!-- ***** Logo End ***** -->
+                <!-- ***** Menu Start ***** -->
+                <ul class="nav">
+                  <li class="scroll-to-section">
+                    <a href="#explore" class="active">Home</a>
+                  </li>
+                  <li class="submenu">
+                    <a href="javascript:;">專輯類別</a>
+                    <ul>
+                      <li><a href="#">華語</a></li>
+                      <li><a href="#">韓語</a></li>
+                      <li><a href="#">日語</a></li>
+                      <li><a href="#">西洋</a></li>
+                    </ul>
+                  </li>
+                  <li class="scroll-to-section">
+                    <a href="#chinese">購物車</a>
+                  </li>
+                  <li class="scroll-to-section"><a href="#kids">會員中心</a></li>
+                  <li class="scroll-to-section">
+                    <a href="#footer">連絡我們</a>
+                  </li>
+                  <li class="scroll-to-section">
+                  <?php include 'printFullname.php'; ?>
+                  </li>
+                </ul>
+                <a class="menu-trigger">
+                  <span>Menu</span>
+                </a>
+                <!-- ***** Menu End ***** -->
+              </nav>
             </div>
+          </div>
         </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+      </header>
+      <!-- ***** Header Area End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
@@ -98,8 +97,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Single Product Page</h2>
-                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                        <h2>華語專輯</h2>
+                        <!-- <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
                     </div>
                 </div>
             </div>
@@ -111,15 +110,18 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
         <div class="container">
-                <table style="width:100%" align="center">
+                <table style="width:100%" align="center" border=1>
                     <tr bgcolor='#cd853f' align="center">
-                        <th>科目</th>
-                        <th>成績</th>
+                        <th>產品名稱</th>
+                        <th>歌手</th>
+                        <th>產品說明</th>
+                        <th>售價</th>
+                        <th></th>
                     <tr>
-                    <tr align="center">
-                        <th>國語</th>
-                        <td>75分</td>
-                    <tr>
+                    <?php
+                    $_GET['kind'] = 'm-pop';
+                    include 'displayTable.php';
+                    ?>
                 </table>
         </div>
     </section>
@@ -184,7 +186,13 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </footer>
     
-
+    <script>
+        const select = document.getElementById("mySelect");
+        const hiddenInput = document.getElementById("mySelectValue");
+        select.addEventListener("change", (event) => {
+          hiddenInput.value = event.target.value;
+        });
+    </script>
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
 

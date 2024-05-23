@@ -56,7 +56,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-12">
             <nav class="main-nav">
               <!-- ***** Logo Start ***** -->
-              <a href="mainpage.php" class="logo">
+              <!-- <a href="mainpage.php" class="logo"> -->
                 <img src="assets/images/logo.jpg" width="150" />
               </a>
               <!-- ***** Logo End ***** -->
@@ -97,55 +97,21 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Header Area End ***** -->
     <!-- *****  最新消息 Area Starts ***** -->
     <section class="section" id="explore">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="left-content">
+      <div class="container">  
               <h2>最新消息</h2>
-              <p>
-                <!-- There are 5 pages included in this HexaShop Template and we are
-                providing it to you for absolutely free of charge at our
-                TemplateMo website. There are web development costs for us. -->
-              </p>
-              <table >
-                <tr>
-                  <td>日期</td>
-                  <td>內容</td>
-                </tr>
-                <tr>
-                  <td>20240404</td>
-                  <td>ITZY預售中</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="right-content">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="leather">
-                    <h4>華語專輯</h4>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="first-image">
-                    <img src="assets/images/explore-image-01.jpg" alt="" />
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="second-image">
-                    <img src="assets/images/explore-image-02.jpg" alt="" />
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="types">
-                    <h4>韓語專輯</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              <br>
+              <table style="width:100%" align="center" border = 1>
+                    <tr  align="center">
+                        <th>產品名稱</th>
+                        <th>歌手</th>
+                        <th>產品說明</th>
+                        <th>售價</th>
+                    <tr>
+                    <tr align="center">
+                        <td>75分</td>
+                        <td>75分</td>
+                    <tr>
+                </table> 
       </div>
     </section>
     <!-- ***** Explore Area Ends ***** -->
@@ -240,7 +206,7 @@ https://templatemo.com/tm-571-hexashop
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
@@ -267,12 +233,12 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-eye"></i
                           ></a>
                         </li>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
@@ -281,8 +247,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/men-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Spring</h4>
-                    <span>$120.00</span>
+                  <?php
+                  $_GET['order'] = 0;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -290,12 +259,15 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-eye"></i
-                          ></a>
+                        <form action="chineseProduct.php" method="post">
+                          <input type="hidden" name="yourDataKey" value="yourDataValue">
+                            <button type="submit">
+                              <i class="fa fa-eye"></i>
+                            </button>
+                        </form>
                         </li>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
@@ -304,8 +276,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/men-02.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Air Force 1 X</h4>
-                    <span>$90.00</span>
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -313,12 +288,12 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-eye"></i
                           ></a>
                         </li>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
@@ -327,8 +302,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/men-03.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Love Nana ‘20</h4>
-                    <span>$150.00</span>
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -336,12 +314,12 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-eye"></i
                           ></a>
                         </li>
                         <li>
-                          <a href="single-product.html"
+                          <a href="chineseProduct.php"
                             ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
@@ -350,8 +328,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/men-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Spring</h4>
-                    <span>$120.00</span>
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
               </div>
@@ -360,7 +341,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
       </div>
     </section>
-    <!-- ***** Men Area Ends ***** -->
+    <!-- ***** 華語專輯 Area Ends ***** -->
 
     <!-- *****韓語專輯 Area Starts ***** -->
     <section class="section" id="korean">
@@ -401,8 +382,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/women-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>New Green Jacket</h4>
-                    <span>$75.00</span>
+                  <?php
+                  $_GET['order'] = 0;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -424,8 +408,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/women-02.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Dress</h4>
-                    <span>$45.00</span>
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -447,8 +434,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/women-03.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Spring Collection</h4>
-                    <span>$130.00</span>
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -470,8 +460,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/women-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Spring</h4>
-                    <span>$120.00</span>
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
               </div>
@@ -480,7 +473,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
       </div>
     </section>
-    <!-- ***** Women Area Ends ***** -->
+    <!-- ***** 韓語專輯 Area Ends ***** -->
 
     <!-- ***** 日語專輯 Area Starts ***** -->
     <section class="section" id="japanese">
@@ -521,8 +514,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>School Collection</h4>
-                    <span>$80.00</span>
+                  <?php
+                  $_GET['order'] = 0;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -544,8 +540,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-02.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Summer Cap</h4>
-                    <span>$12.00</span>
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -567,8 +566,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-03.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Kid</h4>
-                    <span>$30.00</span>
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -590,8 +592,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Spring</h4>
-                    <span>$120.00</span>
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
               </div>
@@ -600,7 +605,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
       </div>
     </section>
-    <!-- ***** Kids Area Ends ***** -->
+    <!-- ***** 日語專輯 Area Ends ***** -->
 
     <!-- ***** 西洋專輯 Area Starts ***** -->
     <section class="section" id="english">
@@ -641,8 +646,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>School Collection</h4>
-                    <span>$80.00</span>
+                  <?php
+                  $_GET['order'] = 0;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -664,8 +672,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-02.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Summer Cap</h4>
-                    <span>$12.00</span>
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -687,8 +698,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-03.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Kid</h4>
-                    <span>$30.00</span>
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
                 <div class="item">
@@ -710,8 +724,11 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/kid-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
-                    <h4>Classic Spring</h4>
-                    <span>$120.00</span>
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
                   </div>
                 </div>
               </div>
@@ -720,7 +737,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
       </div>
     </section>
-    <!-- ***** Kids Area Ends ***** -->
+    <!-- ***** 西洋專輯 Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <footer id="footer">
