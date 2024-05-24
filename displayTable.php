@@ -24,6 +24,7 @@
         $FindProduct_result = $conn->query($FindProduct_sql);
         if ($FindProduct_result->num_rows > 0) {
             while($row = $FindProduct_result->fetch_array()){
+                $Product_id = $row['product_id'];
                 echo '<tr align="center">
                 <td>'.$row['title'].'</td>
                 <td>'.$row['artist_name'].'</td>
@@ -31,7 +32,7 @@
                 <td>'.$row['price'].'</td>
                 <td>
                     <form method="post" action="addCart.php">
-                        <select name="mySelect" id="mySelect">
+                        <select nname="mySelect" id="mySelect" onchange="updateHiddenInput(this)">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -62,8 +63,9 @@
                             <option value="28">28</option>
                             <option value="29">29</option>
                         </select>
-                        <input type="hidden" name="product_id" id="product_id" value="'.$row['product_id'].'">
-                        <input type="hidden" name="mySelectValue" id="mySelectValue" value="">
+                        <input type="hidden" name="mySelectValue" id="mySelectValue" value="1">
+                        <input type="hidden" name="rowProductId" id="rowProductId" value='.$Product_id.'>
+                        <input type="hidden" name="rowProductPrice" id="rowProductPrice" value='.$row['price'].'>
                         <button type="submit">加入購物車</button>
                     </form>  
                 </td>
@@ -75,3 +77,12 @@
         echo 'nothing';
     }
 ?>
+
+
+<script>
+    function updateHiddenInput(selectElement) {
+        var selectedValue = selectElement.value;
+        var hiddenInput = selectElement.form.querySelector('#mySelectValue');
+        hiddenInput.value = selectedValue;
+    }
+</script>

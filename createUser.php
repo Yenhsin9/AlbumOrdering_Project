@@ -16,8 +16,8 @@ try {
         $checkId_sql = 'SELECT MAX(id) AS maxNum FROM login';
         $check_result = $pdo->query($checkId_sql);
         $row = $check_result->fetch(PDO::FETCH_ASSOC);
-        $maxNum = $row['maxNum'] + 1;
-
+        $maxNum = intval($row['maxNum']) + 1;
+        $strmaxNum = (string)$maxNum;
         $Fullname = $_POST['fullname'];
         $Account = $_POST['account'];
         $Password = $_POST['password'];
@@ -25,7 +25,7 @@ try {
         $stmt = $pdo->prepare("INSERT INTO login (id, account, password, fullname) VALUES (?, ?, ?, ?)");
         if ($stmt) {
             //綁定參數
-            $stmt->bindParam(1, $maxNum, PDO::PARAM_INT);
+            $stmt->bindParam(1, $strmaxNum, PDO::PARAM_STR);
             $stmt->bindParam(2, $Account, PDO::PARAM_STR);
             $stmt->bindParam(3, $Password, PDO::PARAM_STR);
             $stmt->bindParam(4, $Fullname, PDO::PARAM_STR);

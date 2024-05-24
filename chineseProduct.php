@@ -70,7 +70,7 @@ https://templatemo.com/tm-571-hexashop
                     </ul>
                   </li>
                   <li class="scroll-to-section">
-                    <a href="#chinese">購物車</a>
+                    <a href="cartPage.php">購物車</a>
                   </li>
                   <li class="scroll-to-section"><a href="#kids">會員中心</a></li>
                   <li class="scroll-to-section">

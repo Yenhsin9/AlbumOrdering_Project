@@ -63,19 +63,19 @@ https://templatemo.com/tm-571-hexashop
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
                 <li class="scroll-to-section">
-                  <a href="#explore" class="active">Home</a>
+                  <a href="mainpage.php" class="active">Home</a>
                 </li>
                 <li class="submenu">
                   <a href="javascript:;">專輯類別</a>
                   <ul>
                     <li><a href="chineseProduct.php">華語</a></li>
-                    <li><a href="#">韓語</a></li>
+                    <li><a href="koreanProduct.php">韓語</a></li>
                     <li><a href="#">日語</a></li>
                     <li><a href="#">西洋</a></li>
                   </ul>
                 </li>
                 <li class="scroll-to-section">
-                  <a href="#chinese">購物車</a>
+                  <a href="cartPage.php">購物車</a>
                 </li>
                 <li class="scroll-to-section"><a href="#kids">會員中心</a></li>
                 <li class="scroll-to-section">
@@ -237,11 +237,6 @@ https://templatemo.com/tm-571-hexashop
                             ><i class="fa fa-eye"></i
                           ></a>
                         </li>
-                        <li>
-                          <a href="chineseProduct.php"
-                            ><i class="fa fa-shopping-cart"></i
-                          ></a>
-                        </li>
                       </ul>
                     </div>
                     <img src="assets/images/men-01.jpg" alt="" />
@@ -259,21 +254,13 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                        <form action="chineseProduct.php" method="post">
-                          <input type="hidden" name="yourDataKey" value="yourDataValue">
-                            <button type="submit">
-                              <i class="fa fa-eye"></i>
-                            </button>
-                        </form>
-                        </li>
-                        <li>
                           <a href="chineseProduct.php"
-                            ><i class="fa fa-shopping-cart"></i
+                            ><i class="fa fa-eye"></i
                           ></a>
                         </li>
                       </ul>
                     </div>
-                    <img src="assets/images/men-02.jpg" alt="" />
+                    <img src="assets/images/men-01.jpg" alt="" />
                   </div>
                   <div class="down-content">
                   <?php
@@ -290,11 +277,6 @@ https://templatemo.com/tm-571-hexashop
                         <li>
                           <a href="chineseProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="chineseProduct.php"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -316,11 +298,6 @@ https://templatemo.com/tm-571-hexashop
                         <li>
                           <a href="chineseProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="chineseProduct.php"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -368,13 +345,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="koreanProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -394,13 +366,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="koreanProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -420,13 +387,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="koreanProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -446,13 +408,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="koreanProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -500,13 +457,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="japaneseProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -526,13 +478,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="japaneseProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -552,13 +499,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="japaneseProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -578,13 +520,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="japaneseProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -632,13 +569,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="englishProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -658,13 +590,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="englishProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -684,13 +611,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="englishProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
@@ -710,13 +632,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="hover-content">
                       <ul>
                         <li>
-                          <a href="single-product.html"
+                          <a href="englishProduct.php"
                             ><i class="fa fa-eye"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="single-product.html"
-                            ><i class="fa fa-shopping-cart"></i
                           ></a>
                         </li>
                       </ul>
