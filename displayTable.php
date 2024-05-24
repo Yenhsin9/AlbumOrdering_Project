@@ -66,6 +66,7 @@
                         <input type="hidden" name="mySelectValue" id="mySelectValue" value="1">
                         <input type="hidden" name="rowProductId" id="rowProductId" value='.$Product_id.'>
                         <input type="hidden" name="rowProductPrice" id="rowProductPrice" value='.$row['price'].'>
+                        <input type="hidden" name="kind" id="kind" value='.$Kind.'>
                         <button type="submit">加入購物車</button>
                     </form>  
                 </td>

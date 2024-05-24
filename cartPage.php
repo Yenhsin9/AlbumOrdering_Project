@@ -119,6 +119,7 @@ https://templatemo.com/tm-571-hexashop
                         <th>產品說明</th>
                         <th>數量</th>
                         <th>總價</th>
+                        <th colspan="2">功能</th>
                     <tr>
                     <?php
                     include 'cartTable.php';

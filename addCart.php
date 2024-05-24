@@ -3,11 +3,28 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
-if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice']) {
+
+function getRedirectLink($kind) {
+    switch ($kind) {
+        case 'm-pop':
+            return 'chineseProduct.php';
+        case 'k-pop':
+            return 'koreanProduct.php';
+        case 'j-pop':
+            return 'japaneseProduct.php';
+        case 'west':
+            return 'englishProduct.php';
+        default:
+            return 'mainpage.php'; // Default fallback
+    }
+}
+
+if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice'] && $_POST['kind']) {
     $Amount = $_POST['mySelectValue'];
     $Product_id = $_POST['rowProductId'];
     $Product_Price = $_POST['rowProductPrice'];
-    // ******** 更新你的个人设置 ******** 
+    $Kind = $_POST['kind'];
+    
     $servername = "140.122.184.129:3310";
     $username = "team20";
     $password = "5EGyOY_grkiT[U0j";
@@ -34,16 +51,24 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
         // 如果已存在，更新amount
         $update_sql = "UPDATE cart SET amount = amount + $Amount WHERE member_id = '$memberID' AND product_id = '$Product_id'";
         if ($conn->query($update_sql) === TRUE) {
-            echo "<div>購物車更新成功</div>";
-            echo "<div style='display: flex; gap: 10px;' ><a href='mainPage.php'>繼續購物</a><a href='cartPage.php'>前往購物車</a></div>";
+            $redirectLink = getRedirectLink($Kind);
+            echo "<script type='text/javascript'>
+                alert('已加入購物車!');
+                window.location.href = '$redirectLink';
+                </script>";
+            exit;
         } else {
             echo "<h2 align='center'><font color='antiquewith'>更新購物車失敗!!</font></h2>";
         }
     } else {
         $InsertCart_sql = "INSERT INTO cart (member_id, product_id, price, amount) VALUES ('$memberID', '$Product_id', '$Product_Price', '$Amount')";
         if ($conn->query($InsertCart_sql) === TRUE) {
-            echo "<div>加入購物車成功</div>";
-            echo "<div style='display: flex; gap: 10px;' ><a href='mainPage.php'>繼續購物</a><a href='cartPage.php'>前往購物車</a></div>";
+            $redirectLink = getRedirectLink($Kind);
+            echo "<script type='text/javascript'>
+                alert('已加入購物車!');
+                window.location.href = '$redirectLink';
+                </script>";
+            exit;
         } else {
             echo "<h2 align='center'><font color='antiquewith'>新增購物車失敗!!</font></h2>";
         }
