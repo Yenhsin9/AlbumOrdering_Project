@@ -79,6 +79,9 @@ https://templatemo.com/tm-571-hexashop
                   <li class="scroll-to-section">
                   <?php include 'printFullname.php'; ?>
                   </li>
+                  <li class="scroll-to-section">
+                    <a href="login.html" id="logout-link">登出</a>
+                  </li>
                 </ul>
                 <a class="menu-trigger">
                   <span>Menu</span>
@@ -200,7 +203,15 @@ https://templatemo.com/tm-571-hexashop
     <script src="assets/js/lightbox.js"></script> 
     <script src="assets/js/isotope.js"></script> 
     <script src="assets/js/quantity.js"></script>
-    
+    <script>
+      document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        var userConfirmed = confirm('您確定要登出嗎？'); 
+        if (userConfirmed) {
+          window.location.href = 'login.html';
+        }
+      });
+    </script>
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 

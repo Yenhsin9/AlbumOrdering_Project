@@ -39,8 +39,23 @@ session_start();
                 <td>'.$Info.'</td>
                 <td>'.$Nums.'</td>
                 <td>'.$TotalPrice.'</td>
+                <td>
+                <form method="post" action="cartupdate.php">
+                <input type="hidden" name="Product_id" value="' . $Product_id . '">
+                <input type="submit" name="update" class="link" value="數量更動"/>
+                </form>
+                </td>
+                <td>
+                <form method="post" action="cartdelete.php">
+                <input type="hidden" name="Product_id" value="' . $Product_id . '">
+                <input type="submit" name="delete" class="link" value="Delete"/>
+                </form>
+                </td>
                 <tr>';
-
             }
+        }else{
+            echo '<tr align="center" >
+                <td colspan="5">購物車目前是空的喔！</td>
+                <tr>';
         }
 ?>
