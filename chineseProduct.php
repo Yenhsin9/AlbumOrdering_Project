@@ -58,15 +58,15 @@ https://templatemo.com/tm-571-hexashop
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav">
                   <li class="scroll-to-section">
-                    <a href="#explore" class="active">Home</a>
+                    <a href="mainPage.php" class="active">Home</a>
                   </li>
                   <li class="submenu">
                     <a href="javascript:;">專輯類別</a>
                     <ul>
-                      <li><a href="#">華語</a></li>
-                      <li><a href="#">韓語</a></li>
-                      <li><a href="#">日語</a></li>
-                      <li><a href="#">西洋</a></li>
+                        <li><a href="chineseProduct.php">華語</a></li>
+                        <li><a href="koreanProduct.php">韓語</a></li>
+                        <li><a href="japaneseProduct.php">日語</a></li>
+                        <li><a href="englishProduct.php">西洋</a></li>
                     </ul>
                   </li>
                   <li class="scroll-to-section">
