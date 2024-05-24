@@ -1,12 +1,11 @@
 <?php
-    if ($_POST['account']) {
-        $Account = $_POST['account'];
+session_start();
         // ******** update your personal settings ******** 
         $servername = "140.122.184.129:3310";
         $username = "team20";
         $password = "5EGyOY_grkiT[U0j";
         $dbname = "team20";
-
+        $memberID = $_SESSION['memberID']; 
         // Connecting to and selecting a MySQL database
         $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -20,12 +19,9 @@
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $FindName_sql = "SELECT fullname FROM login WHERE account = '$Account'";
+        $FindName_sql = "SELECT * FROM login WHERE id = '$memberID'";
         $FindName_result = $conn->query($FindName_sql);
         $row = $FindName_result->fetch_assoc();
         $Fullname = $row['fullname'];
         echo "<a >Hi, $Fullname</a>";
-    }else{
-        echo 'nothing';
-    }
 ?>

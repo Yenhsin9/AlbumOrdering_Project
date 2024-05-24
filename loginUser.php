@@ -31,7 +31,7 @@ if (isset($_POST['account']) && isset($_POST['password'])) {
         echo "密碼或帳號錯誤<br> <a href='login.html'>返回主頁</a>";
     }
     else{
-        echo '<form id="redirectForm" action="mainpage.php" method="post">
+        echo '<form id="redirectForm" action="Global.php" method="post">
         <input type="hidden" name="account" value="' . $Account . '" />
         </form>';
         echo '<script>

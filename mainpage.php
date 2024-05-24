@@ -68,7 +68,7 @@ https://templatemo.com/tm-571-hexashop
                 <li class="submenu">
                   <a href="javascript:;">專輯類別</a>
                   <ul>
-                    <li><a href="#">華語</a></li>
+                    <li><a href="chineseProduct.php">華語</a></li>
                     <li><a href="#">韓語</a></li>
                     <li><a href="#">日語</a></li>
                     <li><a href="#">西洋</a></li>
