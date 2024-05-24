@@ -42,5 +42,9 @@ session_start();
                 <tr>';
 
             }
+        }else{
+            echo '<tr align="center" >
+                <td colspan="5">購物車目前是空的喔！</td>
+                <tr>';
         }
 ?>
