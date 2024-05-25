@@ -94,40 +94,32 @@ https://templatemo.com/tm-571-hexashop
       </header>
       <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="page-heading" id="top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>購物車</h2>
-                    </div>
-                </div>
-            </div>
+    <!-- ***** Product Area Start ***** -->
+    <section class="section" id="chinese">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+              <h2>購物車</h2>
+          </div>
         </div>
-    </div>
-    <!-- ***** Main Banner Area End ***** -->
-
-
-    <!-- ***** Product Area Starts ***** -->
-    <section class="section" id="product">
-        <div class="container">
-                <table style="width:100%" align="center" border=1>
-                    <tr bgcolor='#cd853f' align="center">
-                        <th>產品名稱</th>
-                        <th>歌手</th>
-                        <th>產品說明</th>
-                        <th>數量</th>
-                        <th>總價</th>
-                        <th colspan="2">功能</th>
-                    <tr>
-                    <?php
-                    include 'cartTable.php';
-                    ?>
-                </table>
+      </div>
+      <div class="container">
+        <table style="width:100%" align="center" border=1>
+            <tr bgcolor='#cd853f' align="center">
+                <th>產品名稱</th>
+                <th>歌手</th>
+                <th>產品說明</th>
+                <th>數量</th>
+                <th>總價</th>
+                <th colspan="2">功能</th>
+            <tr>
+            <?php
+            include 'cartTable.php';
+            ?>
+        </table>
         </div>
     </section>
-    <!-- ***** Product Area Ends ***** -->
+    <!-- ***** Product Area End ***** -->
     
     <!-- ***** Footer Start ***** -->
     <footer id="footer">
