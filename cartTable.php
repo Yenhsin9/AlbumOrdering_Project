@@ -1,23 +1,9 @@
 <?php
-session_start();
-        // ******** update your personal settings ******** 
-        $servername = "140.122.184.129:3310";
-        $username = "team20";
-        $password = "5EGyOY_grkiT[U0j";
-        $dbname = "team20";
-
-        // Connecting to and selecting a MySQL database
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-        if (!$conn->set_charset("utf8")) {
-            printf("Error loading character set utf8: %s\n", $conn->error);
-            exit();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } 
+        include 'db_connection.php';
 
         $FindCart_sql = "SELECT * FROM cart WHERE member_id = '$memberID'";
         $FindCart_result = $conn->query($FindCart_sql);
@@ -39,17 +25,19 @@ session_start();
                 <td>'.$Info.'</td>
                 <td>'.$Nums.'</td>
                 <td>'.$TotalPrice.'</td>
+                
                 <td>
-                <form method="post" action="cartupdate.php">
-                <input type="hidden" name="Product_id" value="' . $Product_id . '">
-                <input type="submit" name="update" class="link" value="數量更動"/>
-                </form>
+                    <form id="updateForm" method="post" action="cartupdate.php">
+                        <input type="number" id="quantityInput" name="quantity" value="1" min="1" max="20">
+                        <input type="hidden" name="Product_id" value="' . $Product_id . '">
+                        <input type="submit" name="delete" class="link" value="修改"/>
+                    </form>
                 </td>
                 <td>
-                <form method="post" action="cartdelete.php">
-                <input type="hidden" name="Product_id" value="' . $Product_id . '">
-                <input type="submit" name="delete" class="link" value="Delete"/>
-                </form>
+                    <form method="post" action="cartdelete.php">
+                        <input type="hidden" name="Product_id" value="' . $Product_id . '">
+                        <input type="submit" name="delete" class="link" value="Delete"/>
+                    </form>
                 </td>
                 <tr>';
             }
@@ -59,3 +47,10 @@ session_start();
                 <tr>';
         }
 ?>
+
+<script>
+    function updateCart() {
+        var form = document.getElementById("updateForm");
+        form.submit();
+    }
+</script>
