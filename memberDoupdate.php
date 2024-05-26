@@ -162,19 +162,19 @@
             <form class="member-info" action="memberUpdate.php" method="post" onsubmit="return validateForm()">
                 <div class="info-row">
                     <label for="member_password">會員密碼：</label>
-                    <input type="text" id="member_password" name="member_password" placeholder="會員密碼" required />
+                    <input type="text" id="member_password" name="member_password" placeholder="會員密碼"  />
                 </div>
                 <div class="info-row">
                     <label for="fullname">會員姓名：</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="會員姓名" required />
+                    <input type="text" id="fullname" name="fullname" placeholder="會員姓名"  />
                 </div>
                 <div class="info-row">
                     <label for="phone_number">電話號碼：</label>
-                    <input type="text" id="phone_number" name="phone_number" placeholder="電話號碼" required />
+                    <input type="text" id="phone_number" name="phone_number" placeholder="電話號碼"  />
                 </div>
                 <div class="info-row">
                     <label for="E_mail">電子郵件：</label>
-                    <input type="e-mail" id="E_mail" name="E_mail" placeholder="E-mail" required />
+                    <input type="e-mail" id="E_mail" name="E_mail" placeholder="E-mail"  />
                 </div>
                 <input type="submit" value="確認" class="submit" />
             </form>
@@ -257,24 +257,25 @@
                 }, 500);
             });
         });
-
         function validateForm() {
             var phoneNumber = document.getElementById("phone_number").value;
             var email = document.getElementById("E_mail").value;
             var taiwanPhonePattern = /^09\d{8}$/;
-            var gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail.com$/;
+            var gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
-            if (!taiwanPhonePattern.test(phoneNumber)) {
+            if (phoneNumber && !taiwanPhonePattern.test(phoneNumber)) {
                 alert("請輸入有效的台灣電話號碼（09開頭，總共10位數字）");
                 return false;
             }
 
-            if (!gmailPattern.test(email)) {
-                alert("請輸入有效的 Gmail 電子郵件地址(xxxx@gmail.com)");
+            if (email && !gmailPattern.test(email)) {
+                alert("請輸入有效的 Gmail 電子郵件地址");
                 return false;
             }
-            alert("會員資訊更改成功");
+
+            return true;
         }
+
     </script>
 </body>
 
