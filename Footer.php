@@ -9,7 +9,7 @@
             <div class="col-lg-3">
                 <h4>常見問題(FAQ)</h4>
                 <ul>
-                    <li><a href="questionpage.html">Click here</a></li>
+                    <li><a href="questionpage.php">Click here</a></li>
                 </ul>
             </div>
             <div class="col-lg-3">
