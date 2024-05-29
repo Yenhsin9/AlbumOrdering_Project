@@ -381,6 +381,8 @@ https://templatemo.com/tm-571-hexashop
                   ?>
                   </div>
                 </div>
+                <!-- 顯示一張有圖片的專輯 -->
+                <?php include "displayImg.php" ?>
               </div>
             </div>
           </div>
@@ -493,6 +495,8 @@ https://templatemo.com/tm-571-hexashop
                   ?>
                   </div>
                 </div>
+                <!-- 顯示一張有圖片的專輯 -->
+                <?php include "displayImg.php" ?>
               </div>
             </div>
           </div>

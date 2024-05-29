@@ -1,0 +1,12 @@
+目的：爬下95music的專輯資料
+
+1. 將想要的歌手以及想爬的頁數以
+twice 1
+niziu 1
+形式放在data.txt(不要一次爬太多頁，先檢查一下有沒有這麼多頁)
+
+2. 確定C槽底下有跟電腦版本一樣的chromedriver.exe，沒有的話就從這裡下載https://googlechromelabs.github.io/chrome-for-testing/
+3. 執行pagess.py
+4. 決定是否需要刪除資料庫前面的測資
+5.  (1) 會生成download_images資料夾存放照片
+    (2) 會生成product.sql儲存"insert進product"的sql語法
