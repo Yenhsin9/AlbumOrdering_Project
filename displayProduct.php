@@ -1,7 +1,4 @@
 <?php
-if (isset($_GET['kind'])) {
-    $Kind = $_GET['kind'];
-
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -21,32 +18,33 @@ if (isset($_GET['kind'])) {
         echo 'No products found.';
         exit;
     }
-} else {
-    echo 'nothing';
-    exit;
-}
-?>
 
-<?php if (!empty($products)): ?>
-    <?php foreach ($products as $product): ?>
-        <div class="item">
-            <div class="thumb">
-                <div class="hover-content">
-                    <ul>
-                        <li>
-                            <a href="<?php echo $herfKind; ?>"><i class="fa fa-eye"></i></a>
-                        </li>
-                    </ul>
+    if (!empty($products)) {
+        $count = 0;
+        foreach ($products as $product) {
+            if ($count >= 6) break;
+            $count++;
+            ?>
+            <div class="item">
+                <div class="thumb">
+                    <div class="hover-content">
+                        <ul>
+                            <li>
+                                <a href="<?php echo htmlspecialchars($Link); ?>"><i class="fa fa-eye"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="crawler/downloaded_images/<?php echo htmlspecialchars($product['img']); ?>" alt="" />
                 </div>
-                <img src="crawler/downloaded_images/<?php echo $product['img']; ?>" alt="" />
+                <div class="down-content">
+                    <h4><?php echo htmlspecialchars($product['title']); ?></h4>
+                    <span>NT$<?php echo htmlspecialchars($product['price']); ?></span>
+                    <span><?php echo htmlspecialchars($product['info']); ?></span>
+                </div>
             </div>
-            <div class="down-content">
-                <h4><?php echo $product['title']; ?></h4>
-                <span>NT$<?php echo $product['price']; ?></span>
-                <span><?php echo $product['info']; ?></span>
-            </div>
-        </div>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p>No products found.</p>
-<?php endif; ?>
+            <?php
+        }
+    } else {
+        echo '<p>No products found.</p>';
+    }
+?>
