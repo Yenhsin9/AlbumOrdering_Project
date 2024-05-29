@@ -13,11 +13,14 @@ try {
     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if (isset($_POST['fullname']) && isset($_POST['account']) && isset($_POST['password']) && isset($_POST['comfirm_password'])) {
-        $checkId_sql = 'SELECT MAX(id) AS maxNum FROM login';
+        // 取得當前最大的 id 並轉換為數值型
+        $checkId_sql = 'SELECT MAX(CAST(id AS UNSIGNED)) AS maxNum FROM login';
         $check_result = $pdo->query($checkId_sql);
         $row = $check_result->fetch(PDO::FETCH_ASSOC);
         $maxNum = intval($row['maxNum']) + 1;
-        $strmaxNum = (string)$maxNum;
+        
+        // 將最大 id 轉換為字串
+        $strmaxNum = strval($maxNum);
         $Fullname = $_POST['fullname'];
         $Account = $_POST['account'];
         $Password = $_POST['password'];
