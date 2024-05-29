@@ -185,8 +185,91 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="men-item-carousel">
               <div class="owl-men-item owl-carousel">
-                <?php 
+                <!-- <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="chineseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/men-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 0;
                   $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="chineseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/men-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="chineseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/men-03.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="chineseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/men-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'm-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div> -->
+                <?php 
                   $herfKind = 'chineseProduct.php';
                   include "displayProduct.php"; 
                 ?>
@@ -214,8 +297,91 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="women-item-carousel">
               <div class="owl-women-item owl-carousel">
-                <?php 
+                <!-- <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="koreanProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/women-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 0;
                   $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="koreanProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/women-02.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="koreanProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/women-03.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="koreanProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/women-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'k-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div> -->
+                <?php 
                   $herfKind = 'koreanProduct.php';
                   include "displayProduct.php"; 
                 ?>
@@ -243,8 +409,92 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="kid-item-carousel">
               <div class="owl-kid-item owl-carousel">
-                <?php 
+                <!-- <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="japaneseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 0;
                   $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="japaneseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-02.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="japaneseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-03.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="japaneseProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'j-pop';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div> -->
+                <!-- 顯示所有有圖片的專輯 -->
+                <?php 
                   $herfKind = 'japaneseProduct.php';
                   include "displayProduct.php"; 
                 ?>
@@ -272,8 +522,91 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="kid-item-carousel">
               <div class="owl-kid-item owl-carousel">
-                <?php 
+                <!-- <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="englishProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 0;
                   $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="englishProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-02.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 1;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="englishProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-03.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 2;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="thumb">
+                    <div class="hover-content">
+                      <ul>
+                        <li>
+                          <a href="englishProduct.php"
+                            ><i class="fa fa-eye"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="assets/images/kid-01.jpg" alt="" />
+                  </div>
+                  <div class="down-content">
+                  <?php
+                  $_GET['order'] = 3;
+                  $_GET['kind'] = 'west';
+                  include 'displayProduct.php';
+                  ?>
+                  </div>
+                </div> -->
+                <?php 
                   $herfKind = 'englishProduct.php';
                   include "displayProduct.php"; 
                 ?>
