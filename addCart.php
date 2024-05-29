@@ -28,22 +28,8 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
     $Product_id = $_POST['rowProductId'];
     $Product_Price = $_POST['rowProductPrice'];
     $Kind = $_POST['kind'];
-    
-    $servername = "140.122.184.129:3310";
-    $username = "team20";
-    $password = "5EGyOY_grkiT[U0j";
-    $dbname = "team20";
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-    if (!$conn->set_charset("utf8")) {
-        printf("Error loading character set utf8: %s\n", $conn->error);
-        exit();
-    }
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
+    include 'db_connection.php';
 
     $memberID = $_SESSION['memberID'];
     $check_existing_sql = "SELECT COUNT(*) as count FROM cart WHERE member_id = '$memberID' AND product_id = '$Product_id'";
