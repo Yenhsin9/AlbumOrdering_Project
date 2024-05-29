@@ -185,7 +185,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="men-item-carousel">
               <div class="owl-men-item owl-carousel">
-                <div class="item">
+                <!-- <div class="item">
                   <div class="thumb">
                     <div class="hover-content">
                       <ul>
@@ -268,7 +268,11 @@ https://templatemo.com/tm-571-hexashop
                   include 'displayProduct.php';
                   ?>
                   </div>
-                </div>
+                </div> -->
+                <?php 
+                  $herfKind = 'chineseProduct.php';
+                  include "displayProduct.php"; 
+                ?>
               </div>
             </div>
           </div>
@@ -297,7 +301,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="women-item-carousel">
               <div class="owl-women-item owl-carousel">
-                <div class="item">
+                <!-- <div class="item">
                   <div class="thumb">
                     <div class="hover-content">
                       <ul>
@@ -380,9 +384,11 @@ https://templatemo.com/tm-571-hexashop
                   include 'displayProduct.php';
                   ?>
                   </div>
-                </div>
-                <!-- 顯示一張有圖片的專輯 -->
-                <?php include "displayImg.php" ?>
+                </div> -->
+                <?php 
+                  $herfKind = 'koreanProduct.php';
+                  include "displayProduct.php"; 
+                ?>
               </div>
             </div>
           </div>
@@ -411,7 +417,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="kid-item-carousel">
               <div class="owl-kid-item owl-carousel">
-                <div class="item">
+                <!-- <div class="item">
                   <div class="thumb">
                     <div class="hover-content">
                       <ul>
@@ -494,9 +500,12 @@ https://templatemo.com/tm-571-hexashop
                   include 'displayProduct.php';
                   ?>
                   </div>
-                </div>
-                <!-- 顯示一張有圖片的專輯 -->
-                <?php include "displayImg.php" ?>
+                </div> -->
+                <!-- 顯示所有有圖片的專輯 -->
+                <?php 
+                  $herfKind = 'japaneseProduct.php';
+                  include "displayProduct.php"; 
+                ?>
               </div>
             </div>
           </div>
@@ -525,7 +534,7 @@ https://templatemo.com/tm-571-hexashop
           <div class="col-lg-12">
             <div class="kid-item-carousel">
               <div class="owl-kid-item owl-carousel">
-                <div class="item">
+                <!-- <div class="item">
                   <div class="thumb">
                     <div class="hover-content">
                       <ul>
@@ -608,7 +617,11 @@ https://templatemo.com/tm-571-hexashop
                   include 'displayProduct.php';
                   ?>
                   </div>
-                </div>
+                </div> -->
+                <?php 
+                  $herfKind = 'englishProduct.php';
+                  include "displayProduct.php"; 
+                ?>
               </div>
             </div>
           </div>
