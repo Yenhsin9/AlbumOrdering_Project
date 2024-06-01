@@ -5,17 +5,6 @@ CREATE TABLE administrator (
 	PRIMARY KEY (admin_id)
 	) ENGINE = INNODB;
 
--- CREATE TABLE member_admin (
--- 	admin_id VARCHAR(20),
--- 	member_id VARCHAR(20),
--- 	PRIMARY KEY (
--- 		admin_id,
--- 		member_id
--- 		),
--- 	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id) ON DELETE CASCADE,
--- 	FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
 -- 新增login代替member
 CREATE TABLE LOGIN (
 	id VARCHAR (20),
@@ -26,15 +15,6 @@ CREATE TABLE LOGIN (
 	E_mail VARCHAR(30) NULL,
 	PRIMARY KEY (id)
 	) ENGINE = INNODB;
-
--- CREATE TABLE members (
--- 	member_id VARCHAR(20),
--- 	name VARCHAR(30),
--- 	phone_number VARCHAR(20),
--- 	E_mail VARCHAR(30),
--- 	password VARCHAR(20),
--- 	PRIMARY KEY (member_id)
--- 	) ENGINE = INNODB;
 
 CREATE TABLE artist (
 	artist_id VARCHAR(20),
@@ -75,41 +55,31 @@ CREATE TABLE cart (
 	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
 	) ENGINE = INNODB;
 
--- create table cart
--- 	(member_id	varchar(20),
--- 	 product_id	varchar(20),
--- 	 price	int,
--- 	 amount	int,
--- 	 primary key (member_id),
--- 	 foreign key (member_id) references members(member_id)
--- 		on delete cascade,
--- 	 foreign key (product_id) references product(product_id)
--- 		on delete set null
--- 	) ENGINE=INNODB;
-
+-- 改
 CREATE TABLE orders (
-	order_num VARCHAR(20),
-	cart_member_id VARCHAR(20),
+	order_id VARCHAR(20),
+	member_id VARCHAR(20),
 	purchase_date VARCHAR(20),
-	purchaser VARCHAR(30),
-	consumption INT,
+	fullname VARCHAR(30),
+	total_price INT,
 	completion_date VARCHAR(20),
-	conditions VARCHAR(3),
-	mailing_information VARCHAR(100),
-	PRIMARY KEY (order_num),
-	FOREIGN KEY (cart_member_id) REFERENCES cart(member_id) ON DELETE CASCADE
+	conditions VARCHAR(3) SET DEFAULT '已下單',
+	E_mail VARCHAR(30),
+	phone_number VARCHAR(20),
+	PRIMARY KEY (order_id),
+	FOREIGN KEY (member_id) REFERENCES login(id) ON DELETE CASCADE
 	) ENGINE = INNODB;
-
+	
+-- 改
 CREATE TABLE checkout_info (
-	order_num VARCHAR(20),
-	recipient_name VARCHAR(30),
-	tel VARCHAR(20),
-	address VARCHAR(100),
-	payment VARCHAR(4),
-	shipping VARCHAR(4),
-	payment_ammount INT,
-	PRIMARY KEY (order_num),
-	FOREIGN KEY (order_num) REFERENCES orders(order_num) ON DELETE CASCADE
+	order_id VARCHAR(20),
+	member_id VARCHAR(20),
+	product_id VARCHAR(20),
+	price INT,
+	amount INT,
+	FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+	FOREIGN KEY (member_id) REFERENCES LOGIN (id) ON DELETE CASCADE,
+	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
 	) ENGINE = INNODB;
 
 -- 新增kind計數
@@ -122,105 +92,37 @@ CREATE TABLE kind_count (
 CREATE TABLE IF NOT EXISTS artist_count (
     count INT NOT NULL
 );
-insert artist_countn(count) value (0);
+insert artist_count(count) value (0);
+
+-- 新增order記數
+CREATE TABLE IF NOT EXISTS order_count (
+    count INT NOT NULL
+);
+insert order_count(count) value (0);
 
 
 
--- CREATE TABLE invoice (
--- 	order_num VARCHAR(20),
--- 	product_id VARCHAR(20),
--- 	amount INT,
--- 	unit_price INT,
--- 	total_price INT,
--- 	PRIMARY KEY (order_num),
--- 	FOREIGN KEY (order_num) REFERENCES orders(order_num) ON DELETE CASCADE,
--- 	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE order_admin (
--- 	admin_id VARCHAR(20),
--- 	order_num VARCHAR(20),
--- 	PRIMARY KEY (
--- 		admin_id,
--- 		order_num
--- 		),
--- 	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id) ON DELETE CASCADE,
--- 	FOREIGN KEY (order_num) REFERENCES orders(order_num) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE edit (
--- 	admin_id VARCHAR(20),
--- 	info_num VARCHAR(20),
--- 	PRIMARY KEY (
--- 		admin_id,
--- 		info_num
--- 		),
--- 	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id) ON DELETE CASCADE,
--- 	FOREIGN KEY (info_num) REFERENCES new_info(info_num) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE stock (
--- 	admin_id VARCHAR(20),
--- 	product_id VARCHAR(20),
--- 	PRIMARY KEY (
--- 		admin_id,
--- 		product_id
--- 		),
--- 	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id) ON DELETE CASCADE,
--- 	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE releases (
--- 	artist_id VARCHAR(20),
--- 	product_id VARCHAR(20),
--- 	PRIMARY KEY (
--- 		artist_id,
--- 		product_id
--- 		),
--- 	FOREIGN KEY (artist_id) REFERENCES artist(artist_id) ON DELETE CASCADE,
--- 	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE sell (
--- 	order_num VARCHAR(20),
--- 	product_id VARCHAR(20),
--- 	PRIMARY KEY (
--- 		order_num,
--- 		product_id
--- 		),
--- 	FOREIGN KEY (order_num) REFERENCES orders(order_num) ON DELETE CASCADE,
--- 	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- 有cart了
--- CREATE TABLE TEMP (
--- 	member_id VARCHAR(20),
--- 	cart_member_id VARCHAR(20),
--- 	PRIMARY KEY (member_id),
--- 	FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE,
--- 	FOREIGN KEY (cart_member_id) REFERENCES cart(member_id) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE include (
--- 	check_order_num VARCHAR(20),
--- 	order_num VARCHAR(20),
--- 	PRIMARY KEY (check_order_num),
--- 	FOREIGN KEY (check_order_num) REFERENCES checkout_info(order_num) ON DELETE CASCADE,
--- 	FOREIGN KEY (order_num) REFERENCES orders(order_num) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
--- CREATE TABLE detail (
--- 	invoice_order_num VARCHAR(20),
--- 	order_num VARCHAR(20),
--- 	PRIMARY KEY (invoice_order_num),
--- 	FOREIGN KEY (invoice_order_num) REFERENCES invoice(order_num) ON DELETE CASCADE,
--- 	FOREIGN KEY (order_num) REFERENCES orders(order_num) ON DELETE CASCADE
--- 	) ENGINE = INNODB;
-
-
-DROP TRIGGER IF EXISTS before_artist_insert;
 DELIMITER //
+DROP TRIGGER IF EXISTS before_orders_insert;
+CREATE TRIGGER before_orders_insert
+BEFORE INSERT ON orders
+FOR EACH ROW
+BEGIN
+    DECLARE max_count INT;
+    DECLARE v_new_order_id VARCHAR(20);
 
+    -- 獲取最大 count
+    UPDATE order_count SET count = count + 1;
+    SELECT count INTO max_count FROM order_count;
+
+    -- 生成新的 order_id
+    SET v_new_order_id = CONCAT('O', max_count);
+    SET NEW.order_id = v_new_order_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+DROP TRIGGER IF EXISTS before_artist_insert;
 -- 更新 artist 表的觸發器
 CREATE TRIGGER before_artist_insert
 BEFORE INSERT ON artist
@@ -242,7 +144,9 @@ BEGIN
         SET NEW.artist_id = v_new_artist_id;
     END IF;
 END //
+DELIMITER ;
 
+DELIMITER //
 DROP TRIGGER IF EXISTS before_product_insert;
 -- 更新 product 表的觸發器
 CREATE TRIGGER before_product_insert
@@ -275,5 +179,5 @@ BEGIN
     -- 將種類和數量合併生成 product_id
     SET NEW.product_id = CONCAT(TRIM(NEW.kind), TRIM(new_count));
 END //
-
 DELIMITER ;
+

@@ -52,7 +52,7 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 8px;
-            line-height: 1; /* 调整行距 */
+            line-height: 1;
         }
 
         .member-info a {
@@ -62,7 +62,7 @@
             color: #333;
             text-decoration: none;
             text-align: left;
-            padding-left: 150px; /* 往右移动 20px */
+            padding-left: 150px; 
         }
 
         .member-info a:hover {
@@ -75,7 +75,7 @@
 
         .member-info input[type="submit"] {
             background-color: #000;
-            color: white; /* 文字颜色为白色 */
+            color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>MSM Music Shop</title>
 
 
     <!-- Additional CSS Files -->
@@ -23,13 +23,8 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <!--
-
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
+    
+    <link rel="stylesheet" href="assets/css/album.css">
 </head>
 
 <body>
@@ -56,7 +51,6 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>西洋專輯</h2>
-                        <!-- <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
                     </div>
                 </div>
             </div>
@@ -64,26 +58,16 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-
-    <!-- ***** Product Area Starts ***** -->
-    <section class="section" id="product">
-        <div class="container">
-            <table style="width:100%" align="center" border=1>
-                <tr bgcolor='#cd853f' align="center">
-                    <th>產品名稱</th>
-                    <th>歌手</th>
-                    <th>產品說明</th>
-                    <th>售價</th>
-                    <th></th>
-                <tr>
-                    <?php
-                    $_GET['kind'] = 'west';
-                    include 'displayTable.php';
-                    ?>
-            </table>
-        </div>
-    </section>
-    <!-- ***** Product Area Ends ***** -->
+    <!-- ***** Album Area Starts ***** -->
+    <div class="prd-content">
+        <section id="container" class="album_list">
+            <?php
+                $Kind = 'west';
+                include 'displayAlbum.php';
+            ?>
+        </section>
+    </div>
+    <!-- ***** Album Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>

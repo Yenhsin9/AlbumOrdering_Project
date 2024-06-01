@@ -22,6 +22,7 @@
     if (!empty($products)) {
         $count = 0;
         foreach ($products as $product) {
+            // 最多6個
             if ($count >= 6) break;
             $count++;
             ?>

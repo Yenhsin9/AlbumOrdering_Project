@@ -78,6 +78,6 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
         }
     }
 } else {
-    echo '没有接收到需要的数据';
+    echo '没有接收到需要的數據';
 }
 ?>
