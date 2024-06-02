@@ -67,6 +67,8 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
             echo "<h2 align='center'><font color='antiquewith'>更新購物車失敗!!</font></h2>";
         }
     } else {
+        $Title = mysqli_real_escape_string($conn, $Title);
+        $Info = mysqli_real_escape_string($conn, $Info);
         $InsertCart_sql = "INSERT INTO cart (member_id, product_id, price, amount, title, info) VALUES ('$memberID', '$Product_id', '$Product_Price', '$Amount', '$Title', '$Info')";
         if ($conn->query($InsertCart_sql) === TRUE) {
             $redirectLink = getRedirectLink($Kind);
@@ -76,6 +78,7 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
                 </script>";
             exit;
         } else {
+            echo "Error inserting record: " . $conn->error;
             echo "<h2 align='center'><font color='antiquewith'>新增購物車失敗!!</font></h2>";
         }
     }

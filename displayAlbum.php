@@ -35,6 +35,8 @@
                 exit;
             }
             ?>
+
+            
             <div class="element">
                 <div class="prd-box">
                     <div class="prd-img">
@@ -50,10 +52,12 @@
                         <span class="shorten_name">NT$<span class="price_tw"><?php echo htmlspecialchars($product['price']); ?></span>元</span>
                         <span class="shorten_click">
                             <form method="post" action="addCart.php">
-                                <input type="number" id="quantityInput" name="mySelectValue" value="1" min="1" max="20">
-                                <input type="hidden" name="rowProductId" value="<?php echo htmlspecialchars($product['product_id']); ?>">
-                                <input type="hidden" name="rowProductPrice" id="rowProductPrice" value="<?php echo htmlspecialchars($product['price']); ?>">
+                                <input type="number" id="mySelectValue" name="mySelectValue" value="1" min="1" max="29">
+                                <input type="hidden" name="rowProductId" value="<?php echo trim($product['product_id']); ?>">
+                                <input type="hidden" name="rowProductPrice" id="rowProductPrice" value="<?php echo trim($product['price']); ?>">
                                 <input type="hidden" name="kind" id="kind" value="<?php echo $Kind; ?>">
+                                <input type="hidden" name="title" id="title" value="<?php echo trim($product['title']); ?>"> 
+                                <input type="hidden" name="info" id="info" value="<?php echo trim($product['info']); ?>">
                                 <button type="submit">加入購物車</button>
                             </form>
                         </span>
