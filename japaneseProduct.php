@@ -47,6 +47,7 @@
                 </div>
             </div>
         </div>
+        <div class="container">
         <div class="prd-content album-content">
             <section id="container" class="album_list">
                 <?php
@@ -54,6 +55,7 @@
                     include 'displayAlbum.php';
                 ?>
             </section>
+        </div>
         </div>
     </div>
     <!-- ***** Product Area End ***** -->

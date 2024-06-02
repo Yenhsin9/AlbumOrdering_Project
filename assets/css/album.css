@@ -1,19 +1,19 @@
-.album-content .price_tw {
+.price_tw {
     color: #1859ca;
     font-size: 150%;
 }
 
-.album-content .price_sale {
+.price_sale {
     color: #ff0000;
     font-size: 150%;
     font-weight: bold;
 }
 
-.album-content .prod_artist {
+.prod_artist {
     color: #007399;
 }
 
-.album-content .prd-box .error_msg {
+.error_msg {
     display: block;
     padding: 8px 35px 8px 14px;
     background-color: #eddbe3;
@@ -23,7 +23,7 @@
     border-radius: 4px;
 }
 
-.album-content .prd-box .success_msg {
+.success_msg {
     display: block;
     padding: 8px 35px 8px 14px;
     background-color: #ccddbb;
@@ -33,26 +33,32 @@
     border-radius: 4px;
 }
 
-.album-content .prd-box body {
+body {
     padding: 0;
     margin: 0;
 }
 
-.album-content .prd-box .prd-content {
-    padding-left: 50px;
-    padding-right: 50px;
+.prd-content {
+    /* padding-left: 50px;
+    padding-right: 50px; */
     overflow: hidden; /* 確保浮動元素不會影響父容器 */
 }
 
-.album-content .prd-box div.element .prd-box {
+div.element .prd-box {
     padding: 6px;
 }
 
-.album-content .prd-box section {
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+
+section {
     line-height: 1.5em;
 }
 
-.album-content .prd-box .prd-img {
+.prd-img {
     display: block;
     position: relative;
     width: 100%;
@@ -62,7 +68,7 @@
     background-repeat: no-repeat;
 }
 
-.album-content .prd-box .prd-img img {
+.prd-img img {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,7 +77,7 @@
     object-fit: contain;
 }
 
-.album-content .prd-box .shorten {
+.shorten {
     height: 150%;
     overflow: hidden;
     float: left;
@@ -80,7 +86,7 @@
     white-space: nowrap;
 }
 
-.album-content .prd-box .shorten_name {
+.shorten_name {
     height: 150%;
     overflow: hidden;
     float: left;
@@ -88,7 +94,7 @@
     clear: both;
 }
 
-.album-content .prd-box .shorten_click {
+.shorten_click {
     height: auto;
     overflow: hidden;
     float: left;
@@ -96,7 +102,7 @@
     clear: both;
 }
 
-.album-content .prd-box div.prd-content section.album_list {
+div.container div.prd-content section.album_list {
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between;  */
@@ -104,8 +110,8 @@
     margin: -10px 0; /* 避免首行和尾行的 margin 被折疊 */
 }
 
-.album-content .prd-box div.prd-content section.album_list div.element {
-    width: 16.5%; /* 每個專輯項目寬度減去間距 */
+div.container div.prd-content section.album_list div.element {
+    width: 20.5%; /* 每個專輯項目寬度減去間距 */
     min-height: 235px;
     overflow: hidden;
     margin: 10px 1.6%; /* 上下間距 */
@@ -114,7 +120,7 @@
     transition: all .8s;
 }
 
-.album-content .prd-box .shorten_click form button[type="submit"] {
+div.container .shorten_click form button[type="submit"] {
     background-color: gray;
     color: white;
     padding: 3.8% 15px;
@@ -123,33 +129,33 @@
     cursor: pointer;
 }
 
-.album-content .prd-box input[type="number"] {
+div.container input[type="number"] {
     margin-right: 5px;
 }
 
-.album-content .prd-box button[type="submit"] {
+button[type="submit"] {
     margin-left: 5px;
 }
 
 @media (max-width: 767px) {
-    .album-content .prd-box div.prd-content section.album_list div.element {
+    div.prd-content section.album_list div.element {
         width: calc(50% - 16px); /* 在小尺寸螢幕上，每個專輯項目寬度為一半 */
     }
 }
 
 @media (max-width: 479px) {
-    .album-content .prd-box div.prd-content section.album_list div.element {
+    div.prd-content section.album_list div.element {
         width: calc(100% - 16px); /* 在超小尺寸螢幕上，每個專輯項目寬度為整個行寬 */
     }
 }
 
 /* 如果專輯數量少於五張，將 justify-content 設置為 flex-start 以保持相同的排列方式 */
 @media (min-width: 768px) and (max-width: 991px) {
-    .album-content .prd-box div.prd-content section.album_list {
+    div.prd-content section.album_list {
         justify-content: center; /* 居中 */
     }
 
-    .album-content .prd-box div.prd-content section.album_list div.element {
+    div.prd-content section.album_list div.element {
         width: calc(30% - 16px); /* 每個專輯項目寬度減去間距 */
     }
 }
