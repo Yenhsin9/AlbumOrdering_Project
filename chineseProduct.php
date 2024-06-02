@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>MSMshop - Chinese Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -49,24 +49,15 @@ https://templatemo.com/tm-571-hexashop
     <?php include 'Header.php'; ?>
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="page-heading" id="top">
+    <!-- ***** Product Area Starts ***** -->
+    <section class="section" id="chinese">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>華語專輯</h2>
-                        <!-- <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
-                    </div>
-                </div>
+            <div class="col-lg-6">
+                <h2>華語專輯</h2>
+            </div>
             </div>
         </div>
-    </div>
-    <!-- ***** Main Banner Area End ***** -->
-
-
-    <!-- ***** Product Area Starts ***** -->
-    <section class="section" id="product">
         <div class="container">
             <table style="width:100%" align="center" border=1>
                 <tr bgcolor='#cd853f' align="center">
