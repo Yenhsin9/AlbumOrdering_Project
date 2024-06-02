@@ -50,27 +50,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>西洋專輯</h2>
+                        <h2 style="padding-left:11px">西洋專輯</h2>
                         <!-- <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
                     </div>
                 </div>
             </div>
         </div>
+        <div class = "container">
+            <div class="prd-content">
+                <section id="container" class="album_list">
+                    <?php
+                        $Kind = 'west';
+                        include 'displayAlbum.php';
+                    ?>
+                </section>
+            <div>
+        </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
-
-
-    <!-- ***** Album Area Starts ***** -->
-    <div class="prd-content">
-        <section id="container" class="album_list">
-            <?php
-                $Kind = 'west';
-                include 'displayAlbum.php';
-            ?>
-        </section>
-
-    <div>
-    <!-- ***** Album Area Ends ***** -->
+    <!-- ***** Product Area End ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>

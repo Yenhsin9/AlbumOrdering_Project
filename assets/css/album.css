@@ -39,8 +39,8 @@ body {
 }
 
 .prd-content {
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
     overflow: hidden; /* 確保浮動元素不會影響父容器 */
 }
 
@@ -102,7 +102,7 @@ section {
     clear: both;
 }
 
-div.prd-content section.album_list {
+div.container div.prd-content section.album_list {
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-between;  */
@@ -110,8 +110,8 @@ div.prd-content section.album_list {
     margin: -10px 0; /* 避免首行和尾行的 margin 被折疊 */
 }
 
-div.prd-content section.album_list div.element {
-    width: 16.5%; /* 每個專輯項目寬度減去間距 */
+div.container div.prd-content section.album_list div.element {
+    width: 20.5%; /* 每個專輯項目寬度減去間距 */
     min-height: 235px;
     overflow: hidden;
     margin: 10px 1.6%; /* 上下間距 */
@@ -120,7 +120,7 @@ div.prd-content section.album_list div.element {
     transition: all .8s;
 }
 
-.shorten_click form button[type="submit"] {
+div.container .shorten_click form button[type="submit"] {
     background-color: gray;
     color: white;
     padding: 3.8% 15px;
@@ -129,7 +129,7 @@ div.prd-content section.album_list div.element {
     cursor: pointer;
 }
 
-input[type="number"] {
+div.container input[type="number"] {
     margin-right: 5px;
 }
 
