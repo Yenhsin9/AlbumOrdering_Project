@@ -2,30 +2,21 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
-
-    <title>Hexashop - Product Detail Page</title>
-
+    <title>MSM Music Shop</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
-
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
-
     <link rel="stylesheet" href="assets/css/lightbox.css">
-
     <link rel="stylesheet" href="assets/css/album.css">
-
 </head>
 
 <body>
@@ -40,13 +31,12 @@
     </div>
     <!-- ***** Preloader End ***** -->
 
-
     <!-- ***** Header Area Start ***** -->
-	<?php include 'Header.php'; ?>
+    <?php include 'Header.php'; ?>
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Product Area Starts ***** -->
-    <section class="section" id="chinese">
+    <section class="section" id="korean">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -57,15 +47,13 @@
                 </div>
             </div>
         </div>
-        <div class = "container">
-            <div class="prd-content">
-                <section id="container" class="album_list">
-                    <?php
-                        $Kind = 'k-pop';
-                        include 'displayAlbum.php';
-                    ?>
-                </section>
-            <div>
+        <div class="prd-content album-content">
+            <section id="container" class="album_list">
+                <?php
+                    $Kind = 'k-pop';
+                    include 'displayAlbum.php';
+                ?>
+            </section>
         </div>
     </div>
     <!-- ***** Product Area End ***** -->
