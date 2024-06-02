@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
 
-    <title>MSM Music Shop</title>
+    <title>Hexashop - Product Detail Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -44,13 +44,14 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="page-heading" id="top">
+    <!-- ***** Product Area Starts ***** -->
+    <section class="section" id="chinese">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>華語專輯</h2>
+                        <!-- <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
                     </div>
                 </div>
             </div>
@@ -58,16 +59,26 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-    <!-- ***** Album Area Starts ***** -->
-    <div class="prd-content">
-        <section id="container" class="album_list">
-            <?php
-                $Kind = 'm-pop';
-                include 'displayAlbum.php';
-            ?>
-        </section>
-    <div>
-    <!-- ***** Album Area Ends ***** -->
+
+    <!-- ***** Product Area Starts ***** -->
+    <section class="section" id="product">
+        <div class="container">
+            <table style="width:100%" align="center" border=1>
+                <tr bgcolor='#cd853f' align="center">
+                    <th>產品名稱</th>
+                    <th>歌手</th>
+                    <th>產品說明</th>
+                    <th>售價</th>
+                    <th></th>
+                <tr>
+                    <?php
+                    $_GET['kind'] = 'm-pop';
+                    include 'displayTable.php';
+                    ?>
+            </table>
+        </div>
+    </section>
+    <!-- ***** Product Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>

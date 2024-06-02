@@ -15,6 +15,9 @@
                         <li class="scroll-to-section">
                             <a href="mainpage.php" class="active">Home</a>
                         </li>
+                        <li class="scroll-to-section">
+                            <?php include 'printFullname.php'; ?>
+                        </li>
                         <li class="submenu">
                             <a href="javascript:;">專輯類別</a>
                             <ul>
@@ -24,15 +27,16 @@
                                 <li><a href="englishProduct.php">西洋</a></li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section">
-                            <a href="cartPage.php">購物車</a>
+                        <li class="submenu">
+                            <a href="javascript:;">會員中心</a>
+                            <ul>
+                                <li><a href="membercenter.php">會員資料</a></li>
+                                <li><a href="cartPage.php">購物車</a></li>
+                                <li><a href="orderPage.php">訂單狀態</a></li>
+                            </ul>
                         </li>
-                        <li class="scroll-to-section"><a href="membercenter.php">會員中心</a></li>
                         <li class="scroll-to-section">
                             <a href="#footer">連絡我們</a>
-                        </li>
-                        <li class="scroll-to-section">
-                            <?php include 'printFullname.php'; ?>
                         </li>
                         <li class="scroll-to-section">
                         <a href="login.html" id="logout-link">登出</a>
