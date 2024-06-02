@@ -29,6 +29,8 @@ if (session_status() == PHP_SESSION_NONE) {
             $GetCart_result = $conn->query($GetCart_sql);
             if ($GetCart_result->num_rows > 0) {
                 while($row = $GetCart_result->fetch_array()){
+                    $row["title"] = mysqli_real_escape_string($conn, $row["title"]);
+                    $row["info"] = mysqli_real_escape_string($conn, $row["info"]);
                     $CpyID_sql = "INSERT INTO checkout_info (order_id, member_id, product_id, price, amount, title, info) VALUES ('$or_id', '".$row["member_id"]."', '".$row["product_id"]."', '".$row["price"]."', '".$row["amount"]."', '".$row["title"]."', '".$row["info"]."')";
                     $conn->query($CpyID_sql);
                 }
