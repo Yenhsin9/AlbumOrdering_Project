@@ -61,25 +61,17 @@
     <!-- ***** Main Banner Area End ***** -->
 
 
-    <!-- ***** Product Area Starts ***** -->
-    <section class="section" id="product">
-        <div class="container">
-            <table style="width:100%" align="center" border=1>
-                <tr bgcolor='#cd853f' align="center">
-                    <th>產品名稱</th>
-                    <th>歌手</th>
-                    <th>產品說明</th>
-                    <th>售價</th>
-                    <th></th>
-                <tr>
-                    <?php
-                    $_GET['kind'] = 'k-pop';
-                    include 'displayTable.php';
-                    ?>
-            </table>
-        </div>
-    </section>
-    <!-- ***** Product Area Ends ***** -->
+    <!-- ***** Album Area Starts ***** -->
+    <div class="prd-content">
+        <section id="container" class="album_list">
+            <?php
+                $Kind = 'k-pop';
+                include 'displayAlbum.php';
+            ?>
+        </section>
+
+    <div>
+    <!-- ***** Album Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>
