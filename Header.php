@@ -39,7 +39,7 @@
                             <a href="#footer">連絡我們</a>
                         </li>
                         <li class="scroll-to-section">
-                        <a href="login.html" id="logout-link">登出</a>
+                        <a id="logout-link">登出</a>
                         </li>
                     </ul>
                     <a class="menu-trigger">
