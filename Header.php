@@ -28,6 +28,7 @@
                             <a href="cartPage.php">購物車</a>
                         </li>
                         <li class="scroll-to-section"><a href="membercenter.php">會員中心</a></li>
+                        <li class="scroll-to-section"><a href="orderPage.php">訂單狀態</a></li>
                         <li class="scroll-to-section">
                             <a href="#footer">連絡我們</a>
                         </li>
