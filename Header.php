@@ -34,6 +34,9 @@
                         <li class="scroll-to-section">
                             <?php include 'printFullname.php'; ?>
                         </li>
+                        <li class="scroll-to-section">
+                        <a href="login.html" id="logout-link">登出</a>
+                        </li>
                     </ul>
                     <a class="menu-trigger">
                         <span>Menu</span>
@@ -44,3 +47,13 @@
         </div>
     </div>
 </header>
+
+<script>
+      document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        var userConfirmed = confirm('您確定要登出嗎？'); 
+        if (userConfirmed) {
+          window.location.href = 'login.html';
+        }
+      });
+    </script>

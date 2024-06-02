@@ -4,7 +4,7 @@
         }
 
         include 'db_connection.php';
-
+        $Total=0;
         $FindCart_sql = "SELECT * FROM cart WHERE member_id = '$memberID'";
         $FindCart_result = $conn->query($FindCart_sql);
         if ($FindCart_result->num_rows > 0) {
@@ -19,6 +19,7 @@
                 $Info= $Nrow['info'];
                 $ArtistName = $Nrow['artist_name'];
                 $TotalPrice = $Price * $Nums;
+                $Total = $Total+$TotalPrice;
                 echo '<tr align="center">
                 <td>'.$Title.'</td>
                 <td>'.$ArtistName.'</td>
@@ -41,10 +42,15 @@
                 </td>
                 <tr>';
             }
+            echo '</table>';
+            echo '</div>';
+            echo '<br><div style="width:100%; text-align:center;"> <span>總價格為：' . $Total . '</span> <a href="payment.php?total=' . $Total . '"><button style="margin-left: 20px;">前往付款</button></a> </div>';
         }else{
             echo '<tr align="center" >
                 <td colspan="7">購物車目前是空的喔！</td>
                 <tr>';
+            echo '</table>';
+            echo '</div>';
         }
 ?>
 

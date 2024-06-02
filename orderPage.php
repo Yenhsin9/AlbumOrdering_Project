@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>Order page</title>
 
 
     <!-- Additional CSS Files -->
@@ -54,23 +54,54 @@ https://templatemo.com/tm-571-hexashop
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-              <h2>購物車</h2>
+              <h2>訂單狀態</h2>
           </div>
         </div>
       </div>
       <div class="container">
         <table style="width:100%" align="center" border=1>
             <tr bgcolor='#cd853f' align="center">
-                <th>產品名稱</th>
-                <th>歌手</th>
-                <th>產品說明</th>
+                <th>訂單編號</th>
+                <th>商品名稱</th>
+                <th>商品資訊</th>
                 <th>數量</th>
-                <th>總價</th>
-                <th colspan="2">功能</th>
+                <th>購買日期</th>
+                <th>訂單完成日期</th>
+                <th>訂單狀態</th>
+                <th>金額</th>
             <tr>
             <?php
-            include 'cartTable.php';
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                include 'db_connection.php';
+                $memberID = $_SESSION['memberID'];
+                $sql = "SELECT * from checkout_info NATURAL JOIN orders where member_id = $memberID";	
+                $result = $conn->query($sql);	
+                if ($result->num_rows > 0) {	
+                    while($row = $result->fetch_array()){
+                        $Total = $row["price"]*$row["amount"];
+                        echo "<tr align='center'>
+                        <th>".$row["order_id"]."</th>
+                        <th>".$row["title"]."</th>
+                        <th>".$row["info"]."</th>
+                        <th>".$row["amount"]."</th>
+                        <th>".$row["purchase_date"]."</th>
+                        <th>".$row["completion_date"]."</th>
+                        <th>".$row["conditions"]."</th>
+                        <th >".$Total."</th>
+                        </tr>";
+                    }
+                } else {
+                    echo '<tr align="center" >
+                    <td colspan="8">目前沒有訂單</td>
+                    <tr>';
+                    echo '</table>';
+                    echo '</div>';
+                }
             ?>
+        </table>
+       </div>
     </section>
     <!-- ***** Product Area Ends ***** -->
 

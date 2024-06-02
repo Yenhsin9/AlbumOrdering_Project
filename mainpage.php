@@ -82,7 +82,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="inner-content">
                   <h4>Welcome to MSM Music Shop</h4>
                 </div>
-                <img src="assets/images/left-banner-image.jpg" alt="" />
+                <img src="assets/images/misamo.jpg" alt="" />
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@ https://templatemo.com/tm-571-hexashop
                           </div>
                         </div>
                       </div>
-                      <img src="assets/images/baner-right-image-01.jpg" />
+                      <img src="assets/images/amei.jpg" />
                     </div>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ https://templatemo.com/tm-571-hexashop
                           </div>
                         </div>
                       </div>
-                      <img src="assets/images/baner-right-image-02.jpg" />
+                      <img src="assets/images/twice.jpeg" />
                     </div>
                   </div>
                 </div>
@@ -139,7 +139,7 @@ https://templatemo.com/tm-571-hexashop
                           </div>
                         </div>
                       </div>
-                      <img src="assets/images/baner-right-image-03.jpg" />
+                      <img src="assets/images/niziu.jpeg" />
                     </div>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ https://templatemo.com/tm-571-hexashop
                           </div>
                         </div>
                       </div>
-                      <img src="assets/images/baner-right-image-04.jpg" />
+                      <img src="assets/images/taylor.jpeg" />
                     </div>
                   </div>
                 </div>
@@ -306,16 +306,6 @@ https://templatemo.com/tm-571-hexashop
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/lightbox.js"></script>
     <script src="assets/js/isotope.js"></script>
-    <script>
-      document.getElementById('logout-link').addEventListener('click', function(event) {
-        event.preventDefault(); 
-        var userConfirmed = confirm('您確定要登出嗎？'); 
-        if (userConfirmed) {
-          window.location.href = 'login.html';
-        }
-      });
-    </script>
-
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
