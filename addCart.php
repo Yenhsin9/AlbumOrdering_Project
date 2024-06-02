@@ -28,7 +28,9 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
     $Product_id = $_POST['rowProductId'];
     $Product_Price = $_POST['rowProductPrice'];
     $Kind = $_POST['kind'];
-    
+    $Title = $_POST['title'];
+    $Info = $_POST['info'];
+
     $servername = "140.122.184.129:3310";
     $username = "team20";
     $password = "5EGyOY_grkiT[U0j";
@@ -65,7 +67,7 @@ if ($_POST['mySelectValue'] && $_POST['rowProductId'] && $_POST['rowProductPrice
             echo "<h2 align='center'><font color='antiquewith'>更新購物車失敗!!</font></h2>";
         }
     } else {
-        $InsertCart_sql = "INSERT INTO cart (member_id, product_id, price, amount) VALUES ('$memberID', '$Product_id', '$Product_Price', '$Amount')";
+        $InsertCart_sql = "INSERT INTO cart (member_id, product_id, price, amount, title, info) VALUES ('$memberID', '$Product_id', '$Product_Price', '$Amount', '$Title', '$Info')";
         if ($conn->query($InsertCart_sql) === TRUE) {
             $redirectLink = getRedirectLink($Kind);
             echo "<script type='text/javascript'>

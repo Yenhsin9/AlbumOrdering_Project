@@ -25,8 +25,9 @@
         if ($FindProduct_result->num_rows > 0) {
             while($row = $FindProduct_result->fetch_array()){
                 $Product_id = $row['product_id'];
+                $Product_title = trim($row['title']);
                 echo '<tr align="center">
-                <td>'.$row['title'].'</td>
+                <td>'.$Product_title.'</td>
                 <td>'.$row['artist_name'].'</td>
                 <td>'.$row['info'].'</td>
                 <td>'.$row['price'].'</td>
@@ -67,11 +68,12 @@
                         <input type="hidden" name="rowProductId" id="rowProductId" value='.$Product_id.'>
                         <input type="hidden" name="rowProductPrice" id="rowProductPrice" value='.$row['price'].'>
                         <input type="hidden" name="kind" id="kind" value='.$Kind.'>
+                        <input type="hidden" name="title" id="title" value="'.$Product_title.'"> 
+                        <input type="hidden" name="info" id="info" value='.$row['info'].'>
                         <button type="submit">加入購物車</button>
                     </form>  
                 </td>
                     <tr>';
-
             }
         }
     }else{
