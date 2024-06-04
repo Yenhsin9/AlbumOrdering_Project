@@ -44,37 +44,49 @@
         <div class="container">
             <h2>最新消息</h2>
             <br>
+            <div style="text-align: center; margin-left: 840px;">
+                <form action="infoIndex.php" method="get">
+                    <input type="text" name="search" placeholder="輸入ID/日期" value="<?php echo $_GET['search'] ?? ''; ?>">
+                    <input type="submit" value="查詢">
+                </form>
+            </div>
+            <br>
             <table style="width:100%" align="center" border=1>
                 <tr align="center">
                     <th>消息ID</th><th>日期</th><th>消息</th><th colspan="2">動作</th>
-                <tr>
-				<?php
-					if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    include "db_connection.php";
-                    // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM new_info";
-                    $result = $conn->query($sql);	
+                </tr>
+                <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                        $search = $_GET['search'] ?? '';
+                        $field = $_GET['field'] ?? '';
 
-                    if ($result) {
-                        if ($result->num_rows > 0) {	
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td style='text-align: center;'>" . $row["info_id"] . "</td>";
-                                echo "<td style='text-align: center;'>" . $row["info_date"] . "</td>";
-                                echo "<td>" . $row["info"] . "</td>";
-                                echo "<td align='center'><a href='infoDoupdate.php?info_id=" . $row["info_id"] . "'>修改</a></td>";
-                                echo "<td align='center'><a href='infoDelete.php?info_id=" . $row["info_id"] . "'>刪除</a></td>";
-                                echo "</tr>";
-                            }
-                        } 
-                    } else {
-                        echo "Error executing query: " . $conn->error;
+                        $sql = "SELECT * FROM new_info";
+
+                        if (!empty($search) && !empty($field)) {
+                            $sql .= " WHERE $field LIKE '%$search%'";
+                        }
+
+                        $result = $conn->query($sql);
+
+                        if ($result) {
+                            if ($result->num_rows > 0) {    
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td style='text-align: center;'>" . $row["info_id"] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row["info_date"] . "</td>";
+                                    echo "<td>" . $row["info"] . "</td>";
+                                    echo "<td align='center'><a href='infoDoupdate.php?info_id=" . $row["info_id"] . "'>修改</a></td>";
+                                    echo "<td align='center'><a href='infoDelete.php?info_id=" . $row["info_id"] . "'>刪除</a></td>";
+                                    echo "</tr>";
+                                }
+                            } 
+                        } else {
+                            echo "<tr><td colspan='5'>查詢失败: " . $conn->error . "</td></tr>";
+                        }
                     }
                 ?>
             </table>
-			<br>
+            <br>
             <div style="text-align: center;">
                 <form action="infoDocreate.php" method="post">
                     <input type="submit" value="新增"/>

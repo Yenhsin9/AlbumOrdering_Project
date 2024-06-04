@@ -39,37 +39,51 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- *****  歌手資料 Area Starts ***** -->
+    <!-- ***** 歌手資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style = 'text-align: center;'>歌手資料</h2>
+            <h2 style='text-align: center;'>歌手資料</h2>
             <br>
-            <table style="width:100%" align="center" border = 1>
-                <tr  align="center"><th>歌手ID</th><th>歌手名稱</th><th>公司</th></tr>
+            <div style="text-align: center; margin-left: 840px;">
+                <form action="artistIndex.php" method="get">
+                    <input type="text" name="search" placeholder="輸入歌手名稱或公司" value="<?php echo $_GET['search'] ?? ''; ?>">
+                    <input type="submit" value="查詢">
+                </form>
+            </div>
+            <br>
+            <table style="width:100%" align="center" border=1>
+                <tr align="center">
+                    <th>歌手ID</th>
+                    <th>歌手名稱</th>
+                    <th>公司</th>
+                    <th colspan="2">動作</th>
+                </tr>
                 <?php
-                    if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    include "db_connection.php";
-                    // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM artist";
-                    $result = $conn->query($sql);	
+                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                        $search = $_GET['search'] ?? '';
 
-                    if ($result) {
-                        if ($result->num_rows > 0) {	
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["artist_id"] . "</td>";
-                                echo "<td>" . $row["artist_name"] . "</td>";
-                                echo "<td>" . $row["company"] . "</td>";
-                                echo "<td align='center'><a href='artistDoupdate.php?artist_id=" . $row["artist_id"] . "'>修改</a></td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "0 results";
+                        $sql = "SELECT * FROM artist";
+
+                        if (!empty($search)) {
+                            $sql .= " WHERE artist_name LIKE '%$search%' OR company LIKE '%$search%'";
                         }
-                    } else {
-                        echo "Error executing query: " . $conn->error;
+
+                        $result = $conn->query($sql);
+
+                        if ($result) {
+                            if ($result->num_rows > 0) {    
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td style='text-align: center;'>" . $row['artist_id'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['artist_name'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['company'] . "</td>";
+                                    echo "<td align='center'><a href='artistDoupdate.php?artist_id=" . $row["artist_id"] . "'>修改</a></td>";
+                                    echo "</tr>";
+                                }
+                            } 
+                        } else {
+                            echo "<tr><td colspan='4'>查詢失败: " . $conn->error . "</td></tr>";
+                        }
                     }
                 ?>
             </table>
@@ -82,6 +96,7 @@
         </div>
     </section>
     <!-- ***** 歌手資料 Area Ends ***** -->
+
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>

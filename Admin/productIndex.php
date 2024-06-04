@@ -44,44 +44,49 @@
         <div class="container">
             <h2 style='text-align: center;'>商品資料</h2>
             <br>
+            <div style="text-align: center; margin-left: 750px;">
+                <form action="productIndex.php" method="get">
+                    <select name="field">
+                        <option value="product_id">產品ID</option>
+                        <option value="title">產品名稱</option>
+                        <option value="artist_name">歌手名稱</option>
+                        <option value="info">產品說明</option>
+                        <option value="price">售價</option>
+                        <option value="amount">存貨數量</option>
+                    </select>
+                    <input type="text" name="search" placeholder="輸入搜索內容" value="<?php echo $_GET['search'] ?? ''; ?>">
+                    <input type="submit" value="查詢">
+                </form>
+            </div>
+            <br>
             <table style="width:100%" align="center" border=1>
                 <tr align="center">
-                    <th>產品ID</th>
-                    <th>產品名稱</th>
-                    <th>歌手</th>
-                    <th>產品說明</th>
-                    <th>售價</th>
-                    <th>存貨數量</th>
-                    <th colspan="2">動作</th>
+                    <th>產品ID</th><th>產品名稱</th><th>歌手</th><th>產品說明</th><th>售價</th><th>存貨數量</th><th colspan="2">動作</th>
                 </tr>
                 <?php
                     // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM `product`";
+                    $sql = "SELECT product.*, artist.artist_name FROM product LEFT JOIN artist ON product.artist_id = artist.artist_id";
 
-                    // Check if 'kind' parameter exists in URL
-                    if(isset($_GET['kind']) && !empty($_GET['kind'])) {
-                        $kind = mysqli_real_escape_string($conn, $_GET['kind']);
-                        $sql .= " WHERE kind = '$kind'";
+                    // Check if 'field' and 'search' parameters exist in URL
+                    if(isset($_GET['field']) && !empty($_GET['field']) && isset($_GET['search']) && !empty($_GET['search'])) {
+                        $field = mysqli_real_escape_string($conn, $_GET['field']);
+                        $search = mysqli_real_escape_string($conn, $_GET['search']);
+                        if ($field === 'artist_name') {
+                            $sql .= " WHERE artist.artist_name LIKE '%$search%'";
+                        } else {
+                            $sql .= " WHERE product.$field LIKE '%$search%'";
+                        }
                     }
 
                     $result = $conn->query($sql); // Send SQL Query
 
                     if ($result) {
-                        if ($result->num_rows > 0) {	
+                        if ($result->num_rows > 0) {    
                             while($row = $result->fetch_assoc()) {
-                                $artist_name = "Unknown"; // 預設為未知的藝術家名稱
-                                if (!empty($row['artist_id'])) { // 如果 artist_id 不為空
-                                    $findArtistName = "SELECT artist_name FROM artist WHERE artist_id = '" . $row['artist_id'] . "'";
-                                    $findArtistNameResult = $conn->query($findArtistName);
-                                    if ($findArtistNameResult && $findArtistNameResult->num_rows > 0) {
-                                        $artist_row = $findArtistNameResult->fetch_assoc();
-                                        $artist_name = $artist_row['artist_name']; // 如果查詢到藝術家名稱，則將其設置為查詢到的名稱
-                                    }
-                                }
                                 echo "<tr>";
                                 echo "<td>" . $row['product_id'] . "</td>";
                                 echo "<td>" . $row['title'] . "</td>";
-                                echo "<td>" . $artist_name . "</td>";
+                                echo "<td>" . $row['artist_name'] . "</td>";
                                 echo "<td>" . $row['info'] . "</td>";
                                 echo "<td>" . $row['price'] . "</td>";
                                 echo "<td style='text-align: right;'>" . $row['amount'] . "</td>";
