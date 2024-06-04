@@ -22,24 +22,54 @@
 
     <link rel="stylesheet" href="../assets/css/lightbox.css" />
 
-    <style> 
-        select ,tr input {
-            border: 1px solid #ccc; 
+    <style>
+        select,
+        tr input {
+            border: 1px solid #ccc;
             border-radius: 5px;
             display: block;
-            
             color: #333;
             text-decoration: none;
             text-align: left;
-            
             margin-top: 10px;
             margin-bottom: 10px;
             margin-left: 10px;
             padding-left: 12px;
             height: 30px;
-            width: 100%; 
-            max-width: 300px; 
-            box-sizing: border-box; 
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+
+        /* 美化文件输入按钮 */
+        .file-input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .file-input-button {
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        input[type="file"].img-ask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+        }
+
+        .file-input-label {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #555;
+            padding-left: 5px; 
         }
     </style>
 
@@ -65,7 +95,7 @@
         <div class="container">
             <h2 style = 'text-align: center;'>商品資料修改</h2>
             <br>
-            <form action="productUpdate.php" method="post" onsubmit="return validateForm()">
+            <form action="productUpdate.php" method="post" onsubmit="return validateForm()" enctype='multipart/form-data'>
                 <table width="500" border="1" align="center">
                     <?php
                     if (session_status() == PHP_SESSION_NONE) {
@@ -86,8 +116,17 @@
                             </tr>";
 
                             echo "<tr>
-                                <th style='text-align: center;'>圖片</th>
-                                <td bgcolor='#FFFFFF'><input type='text' id='img' name='img' value='" . htmlspecialchars($row["img"]) . "' /></td>
+                                <th style='text-align: center;'>原圖片</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='old_img' name='old_img' value='" . htmlspecialchars($row["img"]) . "' readomly/></td>
+                            </tr>";
+
+                            echo "<tr>
+                                <th style='text-align: center;'>新圖片</th>
+                                <td bgcolor='#FFFFFF'>
+                                    <div class='file-input-wrapper'>
+                                    <input class='file-input-button' type='file' id='img' name='new_img' accept='image/*' />
+                                    </div>
+                                </td>
                             </tr>";
 
                             echo "<tr>

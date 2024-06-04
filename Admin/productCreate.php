@@ -6,7 +6,6 @@
     
     // 匯入資料庫連接
     include 'db_connection.php';
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $img = NULL;
         if ($_FILES['img']['error'] === UPLOAD_ERR_OK) {

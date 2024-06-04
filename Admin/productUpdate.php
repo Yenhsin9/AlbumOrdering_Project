@@ -6,6 +6,18 @@
 
     // 匯入資料庫連接
     include 'db_connection.php';
+    if ($_FILES['new_img']['error'] === UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES['new_img']['tmp_name'];
+        $target_dir = '../crawler/downloaded_images/';
+        $target_file = $target_dir . basename($_FILES['new_img']['name']);
+        $img = basename($_FILES['new_img']['name']);
+        if (move_uploaded_file($tmp_name, $target_file)) {
+            echo "檔案已成功上傳.";
+        } else {
+            echo "檔案上傳失敗.<br><a href='productDoCreate.php'>返回</a>";
+        }
+    }
+    
 
     // 從 post 中獲取商品 ID
     $product_id = $_POST['product_id'];
@@ -28,7 +40,7 @@
         }
     }
 
-    $img = updateField($conn, $product_id, 'img', $_POST['img'] ?? null, $row['img'] ?? '');
+    $img = updateField($conn, $product_id, 'img', $_FILES['new_img']['name'] ?? null, $row['img'] ?? '');
     $title = updateField($conn, $product_id, 'title', $_POST['title'] ?? null, $row['title'] ?? '');
     $artist_id = updateField($conn, $product_id, 'artist_id', $_POST['artist_id'] ?? null, $row['artist_id'] ?? '');
     $info = updateField($conn, $product_id, 'info', $_POST['info'] ?? null, $row['info'] ?? '');

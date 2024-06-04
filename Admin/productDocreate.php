@@ -133,7 +133,7 @@
                                     <select id='artist_id' name='artist_id'>";
                         while ($artist = $artists_result->fetch_assoc()) {
                             $selected = ($artist['artist_id'] == $row['artist_id']) ? "selected" : "";
-                            echo "<option value='" . $artist['artist_id'] . "' $selected>" . htmlspecialchars($artist['artist_name']) . "</option>";
+                            echo "<option value='" . $artist['artist_name'] . "' $selected>" . htmlspecialchars($artist['artist_name']) . "</option>";
                         }
                         echo "</select>
                             </td>
@@ -238,10 +238,11 @@
         var isValidImageFormat = imageFormatRegex.test(img);
 
         // 如果图片文件名不符合格式要求，则显示提示并返回 false
-        if (!isValidImageFormat) {
+        if (img.trim() !== "" && !isValidImageFormat) {
             alert("圖片檔名必須是 jpg、jpeg、png 或 gif 格式！");
             return false;
         }
+
 
         return true;
     }
