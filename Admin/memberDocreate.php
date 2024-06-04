@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSM Music Shop</title>
+    <title>MSMshop- Admin MEMBER CREATE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
@@ -52,29 +52,28 @@
                     include "db_connection.php";
                     
                     echo "<tr>
-                        <th style='text-align: center;'>帳號</th>
-                        <td bgcolor='#FFFFFF'><input type='text' id='fullname' name='account' value=''></td>
+                            <th style='text-align: center; padding: 10px;'>帳號</th>
+                            <td bgcolor='#FFFFFF'><input type='text' id='account' name='account' style='width: 100%;' value=''></td>
                         </tr>";
 
-                        
                     echo "<tr>
-                        <th style='text-align: center;'>全名</th>
-                        <td bgcolor='#FFFFFF'><input type='text' id='fullname' name='fullname' value=''></td>
+                            <th style='text-align: center; padding: 10px;'>全名</th>
+                            <td bgcolor='#FFFFFF'><input type='text' id='fullname' name='fullname' style='width: 100%;' value=''></td>
                         </tr>";
-                
+
                     echo "<tr>
-                        <th style='text-align: center;'>密碼</th>
-                        <td bgcolor='#FFFFFF'><input type='text' id='fullname' name='password' value=''></td>
+                            <th style='text-align: center; padding: 10px;'>密碼</th>
+                            <td bgcolor='#FFFFFF'><input type='password' id='password' name='password' style='width: 100%;' value=''></td>
                         </tr>";
-                
+
                     echo "<tr>
-                        <th style='text-align: center;'>電話</th>
-                        <td bgcolor='#FFFFFF'><input type='text' id='fullname' name='phone_number' value=''></td>
+                            <th style='text-align: center; padding: 10px;'>電話</th>
+                            <td bgcolor='#FFFFFF'><input type='text' id='phone_number' name='phone_number' style='width: 100%;' value=''></td>
                         </tr>";
-                                    
+
                     echo "<tr>
-                        <th style='text-align: center;'>E-mail</th>
-                        <td bgcolor='#FFFFFF'><input type='email' id='fullname' name='E_mail' value=''></td>
+                            <th style='text-align: center; padding: 10px;'>E-mail</th>
+                            <td bgcolor='#FFFFFF'><input type='email' id='E_mail' name='E_mail' style='width: 100%;' value=''></td>
                         </tr>";
                 ?>
                 </table>

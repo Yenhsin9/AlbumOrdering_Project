@@ -9,19 +9,43 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSMshop- Admin MEMBER PAGE</title>
+    <title>MSMshop- Admin INFO CREATE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css" />
-
     <link rel="stylesheet" href="../assets/css/templatemo-hexashop.css" />
-
     <link rel="stylesheet" href="../assets/css/owl-carousel.css" />
-
     <link rel="stylesheet" href="../assets/css/lightbox.css" />
+    
+    <style>
+    .custom-submit input[type="date"],
+    .custom-submit input[type="text"] {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: block;
+        color: #333;
+        text-decoration: none;
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        padding-left: 12px;
+        height: 30px;
+        width: 100%;
+        max-width: 300px;
+        box-sizing: border-box;
+    }
 
+    .custom-submit {
+        width: 100%;
+    }
+
+    .custom-submit input[type="date"],
+    .custom-submit input[type="text"] {
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body>
@@ -39,53 +63,34 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- *****  會員資料 Area Starts ***** -->
+    <!-- ***** 最新消息 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style = 'text-align: center;'>會員資料</h2>
+            <h2 style='text-align: center;'>最新消息新增</h2>
             <br>
-            <table style="width:100%" align="center" border = 1>
-                <tr  align="center"><th>會員ID</th><th>帳號</th><th>全名</th><th>密碼</th><th>電話</th><th>E-mail</th><th colspan="2">動作</th></tr>
-                <?php
-                    if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    include "db_connection.php";
-                    // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM login ORDER BY CAST(id AS UNSIGNED) ASC";
-                    $result = $conn->query($sql);	
-
-                    if ($result) {
-                        if ($result->num_rows > 0) {	
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td align='center'>" . $row['id'] . "</td>";
-                                echo "<td>" . $row["account"] . "</td>";
-                                echo "<td>" . $row["fullname"] . "</td>";
-                                echo "<td>" . $row["password"] . "</td>";
-                                echo "<td>" . $row["phone_number"] . "</td>";
-                                echo "<td>" . $row["E_mail"] . "</td>";
-                                echo "<td align='center'><a href='memberDoUpdate.php?id=" . $row["id"] . "'>修改</a></td>";
-                                echo "<td align='center'><a href='memberDelete.php?id=" . $row["id"] . "'>刪除</a></td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "0 results";
-                        }
-                    } else {
-                        echo "Error executing query: " . $conn->error;
-                    }
-                ?>
-            </table>
-            <br>
-            <div style="text-align: center;">
-                <form action="memberDocreate.php" method="post">
-                    <input type="submit" value="新增"/>
-                </form>
-            </div>
+            <form action="infoCreate.php" method="post">
+                <table width="400" border="1" align="center">
+                <tr>
+                    <th style='text-align: center;'>日期</th>
+                    <td bgcolor='#FFFFFF'>
+                        <div class="custom-submit">
+                            <input style='text-align: center;' type='date' id='info_date' name='info_date' required />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th style='text-align: center;'>消息</th>
+                    <td bgcolor='#FFFFFF'><textarea id='info' name='info' class='custom-submit' required></textarea></td>
+                </tr>
+                </table>
+                <br>
+                <div style="text-align: center;">
+                    <input type='submit' value='新增' />
+                </div>
+            </form>
         </div>
     </section>
-    <!-- ***** 會員資料 Area Ends ***** -->
+    <!-- ***** 最新消息 Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>
@@ -93,11 +98,9 @@
 
     <!-- jQuery -->
     <script src="../assets/js/jquery-2.1.0.min.js"></script>
-
     <!-- Bootstrap -->
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
-
     <!-- Plugins -->
     <script src="../assets/js/owl-carousel.js"></script>
     <script src="../assets/js/accordions.js"></script>
@@ -118,10 +121,8 @@
         }
     });
     </script>
-
     <!-- Global Init -->
     <script src="../assets/js/custom.js"></script>
-
     <script>
     $(function() {
         var selectedClass = "";

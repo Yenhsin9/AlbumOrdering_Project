@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSMshop- Admin MEMBER PAGE</title>
+    <title>MSMshop- Admin ARTIST PAGE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
@@ -39,34 +39,30 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- *****  會員資料 Area Starts ***** -->
+    <!-- *****  歌手資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style = 'text-align: center;'>會員資料</h2>
+            <h2 style = 'text-align: center;'>歌手資料</h2>
             <br>
             <table style="width:100%" align="center" border = 1>
-                <tr  align="center"><th>會員ID</th><th>帳號</th><th>全名</th><th>密碼</th><th>電話</th><th>E-mail</th><th colspan="2">動作</th></tr>
+                <tr  align="center"><th>歌手ID</th><th>歌手名稱</th><th>公司</th></tr>
                 <?php
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start();
                     }
                     include "db_connection.php";
                     // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM login ORDER BY CAST(id AS UNSIGNED) ASC";
+                    $sql = "SELECT * FROM artist";
                     $result = $conn->query($sql);	
 
                     if ($result) {
                         if ($result->num_rows > 0) {	
                             while($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td align='center'>" . $row['id'] . "</td>";
-                                echo "<td>" . $row["account"] . "</td>";
-                                echo "<td>" . $row["fullname"] . "</td>";
-                                echo "<td>" . $row["password"] . "</td>";
-                                echo "<td>" . $row["phone_number"] . "</td>";
-                                echo "<td>" . $row["E_mail"] . "</td>";
-                                echo "<td align='center'><a href='memberDoUpdate.php?id=" . $row["id"] . "'>修改</a></td>";
-                                echo "<td align='center'><a href='memberDelete.php?id=" . $row["id"] . "'>刪除</a></td>";
+                                echo "<td>" . $row["artist_id"] . "</td>";
+                                echo "<td>" . $row["artist_name"] . "</td>";
+                                echo "<td>" . $row["company"] . "</td>";
+                                echo "<td align='center'><a href='artistDoupdate.php?artist_id=" . $row["artist_id"] . "'>修改</a></td>";
                                 echo "</tr>";
                             }
                         } else {
@@ -79,13 +75,13 @@
             </table>
             <br>
             <div style="text-align: center;">
-                <form action="memberDocreate.php" method="post">
+                <form action="artistDocreate.php" method="post">
                     <input type="submit" value="新增"/>
                 </form>
             </div>
         </div>
     </section>
-    <!-- ***** 會員資料 Area Ends ***** -->
+    <!-- ***** 歌手資料 Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>

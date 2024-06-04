@@ -7,16 +7,16 @@
     // 匯入資料庫連接
     include 'db_connection.php';
 
-    // 從 get 中獲取會員 ID
-    $id = $_GET['id'];
+    // 從 get 中獲取最新消息 ID
+    $info_id = $_GET['info_id'];
 
-    if (isset($id)) {
-        $delete_sql = "DELETE FROM login WHERE id='$id'";  
+    if (isset($info_id)) {
+        $delete_sql = "DELETE FROM new_info WHERE info_id='$info_id'";  
     
         if ($conn->query($delete_sql) === TRUE) {
             echo "刪除成功!";
             // 重定向用戶到下一頁
-            header('Location: memberIndex.php');
+            header('Location: manage.php');
             exit;
         }else{
             echo "刪除失敗!";

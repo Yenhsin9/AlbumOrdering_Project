@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSMshop- Admin MEMBER PAGE</title>
+    <title>MSMshop- Admin INFO UPDATE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
@@ -21,6 +21,27 @@
     <link rel="stylesheet" href="../assets/css/owl-carousel.css" />
 
     <link rel="stylesheet" href="../assets/css/lightbox.css" />
+
+    <style> 
+        select ,tr input {
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            display: block;
+            
+            color: #333;
+            text-decoration: none;
+            text-align: left;
+            
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            padding-left: 12px;
+            height: 30px;
+            width: 100%; 
+            max-width: 300px; 
+            box-sizing: border-box; 
+        }
+    </style>
 
 </head>
 
@@ -39,53 +60,57 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- *****  會員資料 Area Starts ***** -->
+    <!-- ***** 最新消息資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style = 'text-align: center;'>會員資料</h2>
+            <h2 style = 'text-align: center;'>最新消息修改</h2>
             <br>
-            <table style="width:100%" align="center" border = 1>
-                <tr  align="center"><th>會員ID</th><th>帳號</th><th>全名</th><th>密碼</th><th>電話</th><th>E-mail</th><th colspan="2">動作</th></tr>
-                <?php
+            <form action="infoUpdate.php" method="post">
+                <table width="500" border="1" align="center">
+                    <?php
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start();
                     }
                     include "db_connection.php";
-                    // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM login ORDER BY CAST(id AS UNSIGNED) ASC";
-                    $result = $conn->query($sql);	
+                    $info_id = $_GET['info_id'];
 
-                    if ($result) {
-                        if ($result->num_rows > 0) {	
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td align='center'>" . $row['id'] . "</td>";
-                                echo "<td>" . $row["account"] . "</td>";
-                                echo "<td>" . $row["fullname"] . "</td>";
-                                echo "<td>" . $row["password"] . "</td>";
-                                echo "<td>" . $row["phone_number"] . "</td>";
-                                echo "<td>" . $row["E_mail"] . "</td>";
-                                echo "<td align='center'><a href='memberDoUpdate.php?id=" . $row["id"] . "'>修改</a></td>";
-                                echo "<td align='center'><a href='memberDelete.php?id=" . $row["id"] . "'>刪除</a></td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "0 results";
+                    if (isset($info_id)) {
+                        $select_sql = "SELECT * FROM new_info WHERE info_id='$info_id'"; 
+						$result = $conn->query($select_sql);
+
+                        if ($result->num_rows > 0) {
+                            $row = mysqli_fetch_array ( $result, MYSQLI_ASSOC );
+                            echo "<tr>
+                                <th style='text-align: center;'>最新消息</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='info_id' name='info_id' value='" . htmlspecialchars($row['info_id']) . "' readonly /></td>
+                            </tr>";
+
+                            echo "<tr>
+                                <th style='text-align: center;'>日期</th>
+                                <td bgcolor='#FFFFFF'><input type='date' id='info_date' name='info_date' value='" . htmlspecialchars($row["info_date"]) . "' required /></td>
+                            </tr>";
+
+                            echo "<tr>
+                                <th style='text-align: center;'>消息</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='info' name='info' value='" . htmlspecialchars($row['info']) . "' required /></td>
+                            </tr>";
+                        }else{
+                            echo "修改失敗!";
                         }
-                    } else {
-                        echo "Error executing query: " . $conn->error;
+
+                    }else{
+                        echo "資料不完全";
                     }
                 ?>
-            </table>
-            <br>
-            <div style="text-align: center;">
-                <form action="memberDocreate.php" method="post">
-                    <input type="submit" value="新增"/>
-                </form>
-            </div>
+                </table>
+                <br>
+                <div style="text-align: center;">
+                    <th style="center"><input type='submit' value='更新' /></th>
+                </div>
+            </form>
         </div>
     </section>
-    <!-- ***** 會員資料 Area Ends ***** -->
+    <!-- ***** 最新消息資料 Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>
@@ -110,13 +135,7 @@
     <script src="../assets/js/lightbox.js"></script>
     <script src="../assets/js/isotope.js"></script>
     <script>
-    document.getElementById('logout-link').addEventListener('click', function(event) {
-        event.preventDefault();
-        var userConfirmed = confirm('您確定要登出嗎？');
-        if (userConfirmed) {
-            window.location.href = 'login.html';
-        }
-    });
+    
     </script>
 
     <!-- Global Init -->
@@ -137,6 +156,7 @@
             }, 500);
         });
     });
+
     </script>
 </body>
 

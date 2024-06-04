@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSM Music Shop</title>
+    <title>MSMshop- Admin PRODUCT PAGE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
@@ -39,22 +39,33 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- *****  商品資料 Area Starts ***** -->
+    <!-- ***** 商品資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style = 'text-align: center;'>商品資料</h2>
+            <h2 style='text-align: center;'>商品資料</h2>
             <br>
-            <table style="width:100%" align="center" border = 1>
-                <tr  align="center"><th>產品ID</th><th>產品名稱</th><th>歌手</th><th>產品說明</th><th>售價</th><th>存貨數量</th><th colspan="2">動作</th></tr>
+            <table style="width:100%" align="center" border=1>
+                <tr align="center">
+                    <th>產品ID</th>
+                    <th>產品名稱</th>
+                    <th>歌手</th>
+                    <th>產品說明</th>
+                    <th>售價</th>
+                    <th>存貨數量</th>
+                    <th colspan="2">動作</th>
+                </tr>
                 <?php
-                    if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    include "db_connection.php";
                     // ******** update your personal settings ******** 
                     $sql = "SELECT * FROM `product`";
-			        $result = $conn->query($sql);	// Send SQL Query
-                    
+
+                    // Check if 'kind' parameter exists in URL
+                    if(isset($_GET['kind']) && !empty($_GET['kind'])) {
+                        $kind = mysqli_real_escape_string($conn, $_GET['kind']);
+                        $sql .= " WHERE kind = '$kind'";
+                    }
+
+                    $result = $conn->query($sql); // Send SQL Query
+
                     if ($result) {
                         if ($result->num_rows > 0) {	
                             while($row = $result->fetch_assoc()) {

@@ -3,14 +3,14 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-
+    
     // 匯入資料庫連接
     include 'db_connection.php';
 
     // 從 get 中獲取商品 ID
     $product_id = $_GET['product_id'];
 
-    if (isset($id)) {
+    if (isset($product_id)) {
         // TODO
         $delete_sql = "DELETE FROM product WHERE product_id='$product_id'";  
     

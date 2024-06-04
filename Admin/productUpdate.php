@@ -24,12 +24,13 @@
             return $postValue;
         } else {
             // 如果 POST 資料不存在或為空，則保持資料庫中的原值不變
-            return isset($rowValue) ? $rowValue : '';
+            return mysqli_real_escape_string(isset($rowValue) ? $rowValue : '');
         }
     }
 
     $img = updateField($conn, $product_id, 'img', $_POST['img'] ?? null, $row['img'] ?? '');
     $title = updateField($conn, $product_id, 'title', $_POST['title'] ?? null, $row['title'] ?? '');
+    $artist_id = updateField($conn, $product_id, 'artist_id', $_POST['artist_id'] ?? null, $row['artist_id'] ?? '');
     $info = updateField($conn, $product_id, 'info', $_POST['info'] ?? null, $row['info'] ?? '');
     $price = updateField($conn, $product_id, 'price', $_POST['price'] ?? null, $row['price'] ?? '');
     $amount = updateField($conn, $product_id, 'amount', $_POST['amount'] ?? null, $row['amount'] ?? '');

@@ -1,3 +1,10 @@
+<?php
+    // 啟動 session
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
+
 <header class="header-area header-sticky">
     <div class="container">
         <div class="row">

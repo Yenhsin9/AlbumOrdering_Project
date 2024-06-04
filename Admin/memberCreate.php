@@ -22,11 +22,11 @@ account<?php
     $id = intval($row['maxNum']) + 1;
 
     // 接收來自表單的資料
-    $account = $_POST['account'];
-    $fullname = $_POST['fullname'];
-    $password = $_POST['password'];
-    $phone_number = isset($_POST['phone_number']) ? $_POST['phone_number'] : NULL;
-    $E_mail = isset($_POST['E_mail']) ? $_POST['E_mail'] : NULL;
+    $account = mysqli_real_escape_string($_POST['account']);
+    $fullname = mysqli_real_escape_string($_POST['fullname']);
+    $password = mysqli_real_escape_string($_POST['password']);
+    $phone_number = mysqli_real_escape_string(isset($_POST['phone_number']) ? $_POST['phone_number'] : NULL);
+    $E_mail = mysqli_real_escape_string(isset($_POST['E_mail']) ? $_POST['E_mail'] : NULL);
 
     // 將資料寫入資料庫
     $insertSql = "INSERT INTO login (id, account, fullname, password, phone_number, E_mail) VALUES ('$id', '$account', '$fullname', '$password', ";

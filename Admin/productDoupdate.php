@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSM Music Shop</title>
+    <title>MSMshop- Admin PRODUCT UPDATE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
@@ -21,6 +21,27 @@
     <link rel="stylesheet" href="../assets/css/owl-carousel.css" />
 
     <link rel="stylesheet" href="../assets/css/lightbox.css" />
+
+    <style> 
+        select ,tr input {
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            display: block;
+            
+            color: #333;
+            text-decoration: none;
+            text-align: left;
+            
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            padding-left: 12px;
+            height: 30px;
+            width: 100%; 
+            max-width: 300px; 
+            box-sizing: border-box; 
+        }
+    </style>
 
 </head>
 
@@ -39,13 +60,13 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- ***** 會員資料 Area Starts ***** -->
+    <!-- ***** 商品資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
             <h2 style = 'text-align: center;'>商品資料修改</h2>
             <br>
             <form action="productUpdate.php" method="post" onsubmit="return validateForm()">
-                <table width="350" border="1" align="center">
+                <table width="500" border="1" align="center">
                     <?php
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start();
@@ -60,53 +81,55 @@
                         if ($result->num_rows > 0) {
                             $row = mysqli_fetch_array ( $result, MYSQLI_ASSOC );
                             echo "<tr>
-								<th>產品ID</th>
-								<td bgcolor='#FFFFFF'><input type='text' id='fullname'name='product_id' value='" . $row['product_id'] . "' readonly /></td>
-								</tr>";
+                                <th style='text-align: center;'>產品ID</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='product_id' name='product_id' value='" . htmlspecialchars($row['product_id']) . "' readonly /></td>
+                            </tr>";
 
-							echo "<tr>
-								<th>圖片</th>
-								<td bgcolor='#FFFFFF'><input type='text' id='fullname'name='img' value=" . $row["img"] . " /></td>
-								</tr>";
-						
-							echo "<tr>
-								<th>類別</th>
-								<td bgcolor='#FFFFFF'><input type='text' id='fullname' name='kind' value=" . $row['kind'] . " readonly /></td>
-								</tr>";
-
-							echo "<tr>
-								<th>產品名稱</th>
-								<td bgcolor='#FFFFFF'><input type='text' id='fullname' name='title' value=" . $row['title'] . " /></td>
-								</tr>";
-							
                             echo "<tr>
-                                <th>歌手名稱</th>
-                                <td bgcolor='#FFFFFF'>";
-                                $findArtistName = "SELECT artist_name FROM artist WHERE artist_id = '" . $row['artist_id'] . "'";
-                                $artistResult = $conn->query($findArtistName);
-                                if ($artistResult->num_rows > 0) {
-                                    $artist_row = $artistResult->fetch_assoc();
-                                    echo "<input type='text' id='fullname' name='artist_name' value='" . $artist_row['artist_name'] . "' readonly/>";
-                                } else {
-                                    echo "Unknown";
-                                }
-                                echo "</td>
-                                </tr>";
+                                <th style='text-align: center;'>圖片</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='img' name='img' value='" . htmlspecialchars($row["img"]) . "' /></td>
+                            </tr>";
 
-							echo "<tr>
-								<th>產品說明</th>
-								<td bgcolor='#FFFFFF'><input type='text' id='fullname'  name='info' value='" . (!empty($row['info']) ? htmlspecialchars($row['info']) : "") . "' /></td>
-								</tr>";
+                            echo "<tr>
+                                <th style='text-align: center;'>類別</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='kind' name='kind' value='" . htmlspecialchars($row["kind"]) . "' readonly/></td>
+                            </tr>";
 
-							echo "<tr>
-								<th>售價</th>
-								<td bgcolor='#FFFFFF'><input type='int' id='fullname' name='price' value=" . $row['price'] . " /></td>
-								</tr>";
+                            echo "<tr>
+                                <th style='text-align: center;'>產品名稱</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='title' name='title' value='" . htmlspecialchars($row['title']) . "' required/></td>
+                            </tr>";
 
-							echo "<tr>
-								<th>存貨數量</th>
-								<td bgcolor='#FFFFFF'><input type='int' id='fullname' name='amount' value='" . (!empty($row['amount']) ? htmlspecialchars($row['amount']) : "") . "' />
-								</tr>";
+                            // Get all artists
+                            $artists_sql = "SELECT artist_id, artist_name FROM artist";
+                            $artists_result = $conn->query($artists_sql);
+
+                            echo "<tr>
+                                <th style='text-align: center;'>歌手名稱</th>
+                                <td bgcolor='#FFFFFF'>
+                                    <select id='artist_id' name='artist_id'>";
+                            while ($artist = $artists_result->fetch_assoc()) {
+                                $selected = ($artist['artist_id'] == $row['artist_id']) ? "selected" : "";
+                                echo "<option value='" . htmlspecialchars($artist['artist_id']) . "' $selected>" . htmlspecialchars($artist['artist_name']) . "</option>";
+                            }
+                            echo "</select>
+                                </td>
+                            </tr>";
+
+                            echo "<tr>
+                                <th style='text-align: center;'>產品說明</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='info' name='info' value='" . htmlspecialchars(!empty($row['info']) ? $row['info'] : "") . "' /></td>
+                            </tr>";
+
+                            echo "<tr>
+                                <th style='text-align: center;'>售價</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='price' name='price' value='" . htmlspecialchars($row['price']) . "' required/></td>
+                            </tr>";
+
+                            echo "<tr>
+                                <th style='text-align: center;'>存貨數量</th>
+                                <td bgcolor='#FFFFFF'><input type='text' id='amount' name='amount' value='" . htmlspecialchars(!empty($row['amount']) ? $row['amount'] : "") . "' /></td>
+                            </tr>";
                         }else{
                             echo "修改失敗!";
                         }
@@ -123,7 +146,7 @@
             </form>
         </div>
     </section>
-    <!-- ***** 會員資料 Area Ends ***** -->
+    <!-- ***** 商品資料 Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>
@@ -148,13 +171,7 @@
     <script src="../assets/js/lightbox.js"></script>
     <script src="../assets/js/isotope.js"></script>
     <script>
-    document.getElementById('logout-link').addEventListener('click', function(event) {
-        event.preventDefault();
-        var userConfirmed = confirm('您確定要登出嗎？');
-        if (userConfirmed) {
-            window.location.href = 'login.html';
-        }
-    });
+    
     </script>
 
     <!-- Global Init -->
@@ -177,11 +194,11 @@
     });
 
     function validateForm() {
-		var img = document.getElementById("img").value;
-		var price = document.getElementById("price").value;
-		var amount = document.getElementById("amount").value;
+		var img = document.getElementsByName("img")[0].value;
+        var price = document.getElementsByName("price")[0].value;
+		var amount = document.getElementsByName("amount")[0].value;
 
-		var isInteger = /^\d+$/.test(price) && /^\d+$/.test(amount);
+        var isInteger = /^[0-9]+$/.test(price) && /^[0-9]+$/.test(amount);
 		var isPositive = parseInt(price) > 0 && parseInt(amount) > 0;
 		var imageFormatRegex = /\.(jpg|jpeg|png|gif)$/i;
 

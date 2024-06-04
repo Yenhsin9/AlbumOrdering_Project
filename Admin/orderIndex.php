@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
 
-    <title>MSMshop- Admin MEMBER PAGE</title>
+    <title>MSMshop- Admin ORDER PAGE</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
@@ -39,53 +39,58 @@
     <?php include 'Header.php'; ?>
     <!-- ***** Header End ***** -->
 
-    <!-- *****  會員資料 Area Starts ***** -->
+    <!-- ***** 訂單資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style = 'text-align: center;'>會員資料</h2>
+            <h2 style='text-align: center;'>訂單資料</h2>
             <br>
-            <table style="width:100%" align="center" border = 1>
-                <tr  align="center"><th>會員ID</th><th>帳號</th><th>全名</th><th>密碼</th><th>電話</th><th>E-mail</th><th colspan="2">動作</th></tr>
+            <table style="width:100%" align="center" border=1>
+                <tr align="center">
+                    <th>訂單狀態</th>
+                    <th>訂單ID</th>
+                    <th>會員ID</th>
+                    <th>訂購日期</th>
+                    <th>完成日期</th>
+                    <th>訂購人</th>
+                    <th>電話</th>
+                    <th>E-mail</th>
+                    <th>總金額</th>
+                    <th colspan="2">動作</th>
+                </tr>
                 <?php
-                    if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    include "db_connection.php";
                     // ******** update your personal settings ******** 
-                    $sql = "SELECT * FROM login ORDER BY CAST(id AS UNSIGNED) ASC";
-                    $result = $conn->query($sql);	
+                    $sql = "SELECT * FROM `orders`";
+
+                    $result = $conn->query($sql); // Send SQL Query
 
                     if ($result) {
                         if ($result->num_rows > 0) {	
                             while($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td align='center'>" . $row['id'] . "</td>";
-                                echo "<td>" . $row["account"] . "</td>";
-                                echo "<td>" . $row["fullname"] . "</td>";
-                                echo "<td>" . $row["password"] . "</td>";
-                                echo "<td>" . $row["phone_number"] . "</td>";
-                                echo "<td>" . $row["E_mail"] . "</td>";
-                                echo "<td align='center'><a href='memberDoUpdate.php?id=" . $row["id"] . "'>修改</a></td>";
-                                echo "<td align='center'><a href='memberDelete.php?id=" . $row["id"] . "'>刪除</a></td>";
+                                echo "<td style='text-align: center;'>" . $row['conditions'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['order_id'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['member_id'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['purchase_date'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['completion_date'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['fullname'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['phone_number'] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row['E_mail'] . "</td>";
+                                echo "<td style='text-align: right;'>" . $row['total_price'] . "</td>";
+
+                                echo "<td align='center'><a href='orderDoupdate.php?order_id=" . $row["order_id"] . "'>修改</a></td>";
+                                echo "<td align='center'><a href='orderDelete.php?order_id=" . $row["order_id"] . "'>刪除</a></td>";
                                 echo "</tr>";
                             }
-                        } else {
-                            echo "0 results";
-                        }
+                        } 
                     } else {
                         echo "Error executing query: " . $conn->error;
                     }
                 ?>
             </table>
             <br>
-            <div style="text-align: center;">
-                <form action="memberDocreate.php" method="post">
-                    <input type="submit" value="新增"/>
-                </form>
-            </div>
         </div>
     </section>
-    <!-- ***** 會員資料 Area Ends ***** -->
+    <!-- ***** 訂單資料 Area Ends ***** -->
 
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>

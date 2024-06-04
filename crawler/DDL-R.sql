@@ -1,7 +1,7 @@
 CREATE TABLE administrator (
-	id VARCHAR(20),
-	account VARCHAR(20),
-	password VARCHAR(20),
+	admin_id VARCHAR(20),
+	account VARCHAR(20) NOT NULL,
+	password VARCHAR(20) NOT NULL,
 	PRIMARY KEY (admin_id)
 	) ENGINE = INNODB;
 
@@ -24,30 +24,20 @@ CREATE TABLE artist (
 	) ENGINE = INNODB;
 
 CREATE TABLE new_info (
-	info_num VARCHAR(20),
-	info_date VARCHAR(20),
+	info_id VARCHAR(20),
+	info_date DATE,
 	info VARCHAR(1024),
-	PRIMARY KEY (info_num)
+	PRIMARY KEY (info_id)
 	) ENGINE = INNODB;
 
 -- 新增img
-CREATE TABLE product (
-	product_id VARCHAR(20),
-	img VARCHAR(30),
-	kind VARCHAR(10),
-	title VARCHAR(30),
-	artist_id VARCHAR(20),
-	info VARCHAR(100),
-	price INT,
-	amount INT,
-	PRIMARY KEY (product_id),
-	FOREIGN KEY (artist_id) REFERENCES artist(artist_id) ON DELETE SET NULL
-	) ENGINE = INNODB;
-
+z
 -- 改 login(id)
 CREATE TABLE cart (
 	member_id VARCHAR(20),
 	product_id VARCHAR(20),
+	title VARCHAR(100),
+	info VARCHAR(100),
 	price INT,
 	amount INT,
 	-- PRIMARY KEY (member_id, product_id),
@@ -62,7 +52,7 @@ CREATE TABLE orders (
 	purchase_date VARCHAR(20),
 	fullname VARCHAR(30),
 	total_price INT,
-	completion_date VARCHAR(20),
+	completion_date DATE,
 	conditions VARCHAR(3) SET DEFAULT '已下單',
 	E_mail VARCHAR(30),
 	phone_number VARCHAR(20),
@@ -75,6 +65,8 @@ CREATE TABLE checkout_info (
 	order_id VARCHAR(20),
 	member_id VARCHAR(20),
 	product_id VARCHAR(20),
+	title VARCHAR(100),
+	info VARCHAR(100),
 	price INT,
 	amount INT,
 	FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
@@ -88,36 +80,61 @@ CREATE TABLE kind_count (
     count INT NOT NULL
 );
 
--- 新增artist記數
-CREATE TABLE IF NOT EXISTS artist_count (
+CREATE TABLE IF NOT EXISTS attr_counter (
+    attr VARCHAR(10) PRIMARY KEY,
     count INT NOT NULL
 );
-insert artist_count(count) value (0);
-
--- 新增order記數
-CREATE TABLE IF NOT EXISTS order_count (
-    count INT NOT NULL
-);
-insert order_count(count) value (0);
-
+insert attr_counter(attr, count) value ('ORDER', 0);
+insert attr_counter(attr, count) value ('ARTIST', 0);
+insert attr_counter(attr, count) value ('ADMIN', 0);
+insert attr_counter(attr, count) value ('INFO', 0);
 
 
 DELIMITER //
-DROP TRIGGER IF EXISTS before_orders_insert;
-CREATE TRIGGER before_orders_insert
-BEFORE INSERT ON orders
+DROP TRIGGER IF EXISTS before_new_info_insert //
+-- 定義新的觸發器 before_new_info_insert
+CREATE TRIGGER before_new_info_insert
+BEFORE INSERT ON new_info
 FOR EACH ROW
 BEGIN
     DECLARE max_count INT;
-    DECLARE v_new_order_id VARCHAR(20);
+    DECLARE v_new_info_id VARCHAR(20);
 
     -- 獲取最大 count
-    UPDATE order_count SET count = count + 1;
-    SELECT count INTO max_count FROM order_count;
+    SELECT count INTO max_count FROM attr_counter WHERE attr = 'INFO' FOR UPDATE;
 
-    -- 生成新的 order_id
-    SET v_new_order_id = CONCAT('O', max_count);
-    SET NEW.order_id = v_new_order_id;
+    -- 生成新的 info_id
+    SET v_new_info_id = CONCAT('NI', max_count + 1);
+    SET NEW.info_id = v_new_info_id;
+
+    -- 更新計數器
+    UPDATE attr_counter SET count = count + 1 WHERE attr = 'INFO';
+END //
+
+DELIMITER ;
+
+DELIMITER //
+DROP TRIGGER IF EXISTS before_admin_insert;
+-- 定義新的觸發器 before_admin_insert
+CREATE TRIGGER before_admin_insert
+BEFORE INSERT ON administrator
+FOR EACH ROW
+BEGIN
+    DECLARE max_count INT;
+    DECLARE v_new_admin_id VARCHAR(20);
+
+    -- 檢查 account 是否已存在
+    IF EXISTS (SELECT 1 FROM administrator WHERE account = NEW.account) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '帳戶已存在，無法插入';
+    ELSE
+        -- 獲取最大 count
+        UPDATE attr_counter SET count = count + 1 WHERE attr = 'ADMIN';
+        SELECT count INTO max_count FROM attr_counter WHERE attr = 'ADMIN';
+
+        -- 生成新的 admin_id
+        SET v_new_admin_id = CONCAT('A', max_count);
+        SET NEW.admin_id = v_new_admin_id;
+    END IF;
 END //
 DELIMITER ;
 
@@ -136,8 +153,8 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Artist name already exists, cannot insert';
     ELSE
         -- 獲取最大count
-		UPDATE artist_count SET count = count + 1;
-		SELECT count INTO max_count FROM artist_count;
+		UPDATE attr_counter SET count = count + 1 WHERE attr = 'ARTIST';
+		SELECT count INTO max_count FROM attr_counter WHERE attr = 'ARTIST';
 
         -- 生成新的 artist_id
         SET v_new_artist_id = CONCAT('S', max_count);
@@ -145,6 +162,31 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
+
+
+DELIMITER //
+DROP TRIGGER IF EXISTS before_orders_insert //
+
+CREATE TRIGGER before_orders_insert
+BEFORE INSERT ON orders
+FOR EACH ROW
+BEGIN
+    DECLARE max_count INT;
+    DECLARE v_new_order_id VARCHAR(20);
+
+    -- 獲取最大 count
+    SELECT count INTO max_count FROM attr_counter WHERE attr = 'ORDER' FOR UPDATE;
+
+    -- 生成新的 order_id
+    SET v_new_order_id = CONCAT('O', max_count + 1);
+    SET NEW.order_id = v_new_order_id;
+
+    -- 更新計數器
+    UPDATE attr_counter SET count = count + 1 WHERE attr = 'ORDER';
+END //
+
+DELIMITER ;
+
 
 DELIMITER //
 DROP TRIGGER IF EXISTS before_product_insert;
@@ -181,3 +223,6 @@ BEGIN
 END //
 DELIMITER ;
 
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE orders;
+SET FOREIGN_KEY_CHECKS = 1;

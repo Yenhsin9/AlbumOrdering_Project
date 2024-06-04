@@ -27,7 +27,7 @@
             return $postValue;
         } else {
             // 如果 POST 資料不存在或為空，則保持資料庫中的原值不變
-            return isset($rowValue) ? $rowValue : '';
+            return mysqli_real_escape_string(isset($rowValue) ? $rowValue : '');
         }
     }
 

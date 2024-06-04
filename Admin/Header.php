@@ -1,15 +1,9 @@
-<head>
-    <!-- <script src="../assets/css/album.css"></script>
-	<script src="../assets/css/bootstrap.min.css"></script>
-	<script src="../assets/css/flex-slider.css"></script>
-	<script src="../assets/css/font-awesome.css"></script>
-	<script src="../assets/css/lightbox.css"></script>
-	<script src="../assets/css/loginpage.css"></script>
-	<script src="../assets/css/owl-carousel.css"></script>
-	<script src="../assets/css/templatemo-hexashop.css"></script> -->
-    <link rel="stylesheet" href="../assets/css/loginpage.css" />
-    <script src="../assets/js/login.js"></script>
-</head>
+<?php
+    // 啟動 session
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 
 <header class="header-area header-sticky">
     <div class="container">
@@ -27,7 +21,20 @@
                             <a href="memberIndex.php">會員管理</a>
                         </li>
                         <li class="scroll-to-section">
+                            <a href="orderIndex.php">訂單管理</a>
+                        </li>
+                        <li class="scroll-to-section">
+                            <a href="artistIndex.php">歌手管理</a>
+                        </li>
+                        <li class="submenu">
                             <a href="productIndex.php">商品管理</a>
+                            <ul class="sub-menu">
+                                <li><a href="productIndex.php">全部</a></li>
+                                <li><a href="productIndex.php?kind=k-pop">K-pop</a></li>
+                                <li><a href="productIndex.php?kind=j-pop">J-pop</a></li>
+                                <li><a href="productIndex.php?kind=m-pop">M-pop</a></li>
+                                <li><a href="productIndex.php?kind=west">West</a></li>
+                            </ul>
                         </li>
                         <li class="scroll-to-section">
                             <?php include 'printAdminAccount.php'; ?>
