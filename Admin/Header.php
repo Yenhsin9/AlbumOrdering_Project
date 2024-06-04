@@ -30,10 +30,10 @@
                             <a href="productIndex.php">商品管理</a>
                             <ul class="sub-menu">
                                 <li><a href="productIndex.php">全部</a></li>
-                                <li><a href="productIndex.php?kind=k-pop">K-pop</a></li>
-                                <li><a href="productIndex.php?kind=j-pop">J-pop</a></li>
-                                <li><a href="productIndex.php?kind=m-pop">M-pop</a></li>
-                                <li><a href="productIndex.php?kind=west">West</a></li>
+                                <li><a href="productIndex.php?field=product_id&search=k-pop">K-pop</a></li>
+                                <li><a href="productIndex.php?field=product_id&search=j-pop">J-pop</a></li>
+                                <li><a href="productIndex.php?field=product_id&search=m-pop">M-pop</a></li>
+                                <li><a href="productIndex.php?field=product_id&search=west">West</a></li>
                             </ul>
                         </li>
                         <li class="scroll-to-section">
