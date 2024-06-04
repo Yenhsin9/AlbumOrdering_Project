@@ -42,14 +42,13 @@
     <!-- ***** 歌手資料 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2 style='text-align: center;'>歌手資料</h2>
-            <br>
             <div style="text-align: center; margin-left: 840px;">
                 <form action="artistIndex.php" method="get">
                     <input type="text" name="search" placeholder="輸入歌手名稱或公司" value="<?php echo $_GET['search'] ?? ''; ?>">
                     <input type="submit" value="查詢">
                 </form>
             </div>
+            <h2 style='text-align: center;'>歌手資料</h2>
             <br>
             <table style="width:100%" align="center" border=1>
                 <tr align="center">

@@ -42,14 +42,13 @@
     <!-- *****  最新消息 Area Starts ***** -->
     <section class="section" id="explore">
         <div class="container">
-            <h2>最新消息</h2>
-            <br>
             <div style="text-align: center; margin-left: 840px;">
                 <form action="infoIndex.php" method="get">
                     <input type="text" name="search" placeholder="輸入ID/日期" value="<?php echo $_GET['search'] ?? ''; ?>">
                     <input type="submit" value="查詢">
                 </form>
             </div>
+            <h2 style='text-align: center;'>最新消息</h2>
             <br>
             <table style="width:100%" align="center" border=1>
                 <tr align="center">
