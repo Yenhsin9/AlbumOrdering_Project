@@ -55,20 +55,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- *****  最新消息 Area Starts ***** -->
     <section class="section" id="explore">
       <div class="container">  
-              <h2>最新消息</h2>
-              <br>
-              <table style="width:100%" align="center" border = 1>
-                    <tr  align="center">
-                        <th>產品名稱</th>
-                        <th>歌手</th>
-                        <th>產品說明</th>
-                        <th>售價</th>
-                    <tr>
-                    <tr align="center">
-                        <td>75分</td>
-                        <td>75分</td>
-                    <tr>
-                </table> 
+        <?php include 'displayInfo.php';?>
       </div>
     </section>
     <!-- ***** Explore Area Ends ***** -->
