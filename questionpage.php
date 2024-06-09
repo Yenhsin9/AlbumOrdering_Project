@@ -47,29 +47,20 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Header Area Start ***** -->
 	<?php include 'Header.php'; ?>
     <!-- ***** Header Area End ***** -->
-
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="page-heading about-page-heading" id="top">
+    <section class="section" id="chinese">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>常見問題</h2>
-                        <span>Awesome, clean &amp; creative HTML5 Template</span>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-12">
+        <div class="inner-content">
+            <h2 style="margin-top: 20px;">常見問題</h2>
+            <div class="row" >Q：訂單下訂後，是否還可以取消？</div>
+            <div class="row">A：您可以在會員中心的訂單一覽中，先確認您的訂單狀態。當訂單狀態為"新訂單"時，是可以直接取消的，若為其他狀態則無法直接進行取消，此時您可以電洽網路客服(02)1234-1234為您處理。</div>
+            <div class="row">Q：我能選擇的付款方式有哪些？</div>
+            <div class="row">A：提供貨到付款、刷卡</div>
+            <div class="row">Q：我能選擇的取貨方式？</div>
+            <div class="row">A：提供門市取貨、宅配</div>
         </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
-    <div class="container">
-        <div class="row" >Q：訂單下訂後，是否還可以取消？</div>
-        <div class="row">A：您可以在會員中心的訂單一覽中，先確認您的訂單狀態。當訂單狀態為"新訂單"時，是可以直接取消的，若為其他狀態則無法直接進行取消，此時您可以電洽網路客服(02)1234-1234為您處理。</div>
-        <div class="row">Q：我能選擇的付款方式有哪些？</div>
-        <div class="row">A：提供貨到付款、刷卡</div>
-        <div class="row">Q：我能選擇的取貨方式？</div>
-        <div class="row">A：提供門市取貨、宅配</div>
-    </div>
+    </section>
     <!-- ***** Contact Area Starts ***** -->
     <div class="contact-us">
         <div class="container">

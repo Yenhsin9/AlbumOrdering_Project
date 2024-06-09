@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="logo">
-                    <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo" />
+                    <img src="assets/images/logo.jpg" width="150" alt="Logo" />
                 </div>
             </div>
             <div class="col-lg-3">
