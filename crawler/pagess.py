@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 main_url = "https://www.95music.com/"
 search_url = 'product_search_v2.php?'
+normal_url = 'products.php?tp='
 
 chrome_driver_path = 'C:\\chromedriver.exe'  # 修改這裡的路徑
 chrome_options = Options()
@@ -85,7 +86,11 @@ def search_and_fetch(url, keyword=None, index=0):
         driver.quit()
 
 def getData(url, keyword=None, page_index=0):
-    soup = search_and_fetch(url, keyword, page_index)
+    safe_search = keyword.replace(" ", "+")
+    # 將替換後的關鍵字添加到 URL 中
+    search_url_with_keyword = f"{url}{search_url}key={safe_search}"
+
+    soup = search_and_fetch(search_url_with_keyword, safe_search, page_index)
     try:
         # Title & Artist & Info & Price & Pics
         title_tags = soup.find_all('span', {'class': 'shorten'})
@@ -140,6 +145,65 @@ def getData(url, keyword=None, page_index=0):
     except Exception as e:
         print('關鍵字找不到:', e)
 
+def getData_none(url, page_index=0):
+    search_url_with_keyword = f"{main_url}{normal_url}2"  # 直接組合網址
+    soup = search_and_fetch(search_url_with_keyword, page_index)
+
+    try:
+        # Title & Artist & Info & Price & Pics
+        title_tags = soup.find_all('span', {'class': 'shorten'})
+        other_tags = soup.find_all('span', {'class': 'shorten_neme'})
+        pic_tags = soup.find_all('a', style=True)
+        link_tags = soup.find_all('a', {'href': re.compile(r'product_detail\.php\?id=\d+&tp=\d+&ca=\w+&in=\d+&pa=\d+')})
+
+        # 合併
+        for i in range(len(title_tags)):
+            global kind
+            title = title_tags[i].text.strip()
+            other_info = [tag.text.strip() for tag in other_tags[i*5:i*5+3]]
+            artists.add(other_info[0])
+
+            if kind == None:
+                service = Service(chrome_driver_path)
+                driver = webdriver.Chrome(service=service, options=chrome_options)
+                product_link = link_tags[i]['href']
+                product_link = main_url + product_link
+                print(product_link)
+
+                driver.get(product_link)
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'prd-img')))
+                html = driver.page_source
+                product_soup = BeautifulSoup(html, 'html.parser')
+                dt_tags = product_soup.find_all('dt')
+
+                for dt_tag in dt_tags:
+                    if dt_tag.get_text() == "商品類別：":
+                        category = dt_tag.find_next_sibling('dd').get_text()
+                        kind = category.split('/')[0]
+                        kind = category_mapping.get(kind, kind.lower())
+                        print("商品類別:", kind)
+                driver.back()
+
+            album_set = [other_info[0]] + process_title(title) + [price_int(other_info[-1])] + [kind]
+
+            # 找到圖片 URL 並下載
+            if i < len(pic_tags):
+                style = pic_tags[i].get('style')
+                if 'background-image' in style:
+                    start_idx = style.find("url('") + len("url('")
+                    end_idx = style.find("')", start_idx)
+                    image_url = style[start_idx:end_idx]
+                    if not image_url.startswith('http'):
+                        image_url = url + image_url
+                    
+                    # 將圖片 URL 加入 album_set
+                    album_set.append(image_url.split("/")[-1])
+                    download_image(image_url)
+            product_file.write(str(album_set).replace('[', '(').replace(']', ')') + ',\n')
+
+    except Exception as e:
+        print('關鍵字找不到:', e)
+
 data = []
 with open('data.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
@@ -160,9 +224,11 @@ kind = None
 page_url = main_url + search_url
 product_file.write('INSERT INTO product (artist_id, title, info, price, kind, img) VALUES\n')
 for i in range(len(data)):
-    for j in range(int(data[i][1])):
-        print(data[i][0], '- page', j+1)
-        getData(page_url, data[i][0], j)
+    for j in range(int(data[i][-1])):
+        data[i] = data[i][:-1]
+        combined = ' '.join([str(element) for element in data[i] if isinstance(element, str)])
+        print(combined, '- page', j+1)
+        getData(page_url, combined, j)
     kind = None
 
 

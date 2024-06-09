@@ -63,6 +63,7 @@
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $search = $_GET['search'] ?? '';
+                    $search = mysqli_real_escape_string($conn, $search);
 
                     $sql = "SELECT * FROM login";
 

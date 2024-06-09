@@ -15,6 +15,15 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="stylesheet" href="assets/css/album.css">
+
+    <style>
+        .search-form {
+            display: flex;
+            justify-content: left;
+            margin: 0 auto; /* This centers the form horizontally */
+            margin-left: 0; /* Adjust margin as per your design */
+        }
+    </style>
 </head>
 <body>
 
@@ -42,13 +51,12 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-left: 850px;">
-                    <form action="japaneseProduct.php" method="get">
+                    <form action="japaneseProduct.php" method="get" class="search-form">
                         <input type="text" name="search" placeholder="輸入歌手/專輯" value="<?php echo $_GET['search'] ?? ''; ?>">
                         <input type="submit" value="查詢">
                     </form>
                 </div>
             </div>
-            
         </div>
         <div class="container">
             <div class="prd-content album-content">

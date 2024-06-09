@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
     <title>MSM Music Shop</title>
 
     <!-- Additional CSS Files -->
@@ -15,7 +17,17 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="stylesheet" href="assets/css/album.css">
+    
+    <style>
+        .search-form {
+            display: flex;
+            justify-content: left;
+            margin: 0 auto; /* This centers the form horizontally */
+            margin-left: 0; /* Adjust margin as per your design */
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- ***** Preloader Start ***** -->
@@ -42,13 +54,12 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-left: 850px;">
-                    <form action="chineseProduct.php" method="get">
-                        <input type="text" name="search" placeholder="輸入歌手/專輯" value="<?php echo $_GET['search'] ?? ''; ?>">
-                        <input type="submit" value="查詢">
-                    </form>
-                </div>
+                <form action="chineseProduct.php" method="get" class="search-form">
+                    <input type="text" name="search" placeholder="輸入歌手/專輯" value="<?php echo $_GET['search'] ?? ''; ?>">
+                    <input type="submit" value="查詢">
+                </form>
             </div>
-            
+            </div>
         </div>
         <div class="container">
             <div class="prd-content album-content">
@@ -67,6 +78,13 @@
     <!-- ***** Footer Start ***** -->
     <?php include 'Footer.php'; ?>
 
+    <script>
+    const select = document.getElementById("mySelect");
+    const hiddenInput = document.getElementById("mySelectValue");
+    select.addEventListener("change", (event) => {
+        hiddenInput.value = event.target.value;
+    });
+    </script>
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
     <!-- Bootstrap -->
@@ -111,4 +129,5 @@
     });
     </script>
 </body>
+
 </html>

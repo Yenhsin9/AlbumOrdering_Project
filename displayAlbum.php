@@ -15,6 +15,7 @@
     $FindProduct_sql = "SELECT product.*, artist.artist_name FROM product LEFT JOIN artist ON product.artist_id = artist.artist_id WHERE product.kind = '$Kind'";
 
     // 添加搜尋條件
+    $Search = mysqli_real_escape_string($conn, $Search);
     $FindProduct_sql .= " AND (product.title LIKE '%$Search%' OR artist.artist_name LIKE '%$Search%')";
 
     $FindProduct_sql .= " ORDER BY product.product_id DESC";
