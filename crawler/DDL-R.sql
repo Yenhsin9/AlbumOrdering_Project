@@ -74,6 +74,16 @@ CREATE TABLE checkout_info (
 	FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
 	) ENGINE = INNODB;
 
+-- 新增
+CREATE TABLE suggestion_box (
+	qa_id VARCHAR(20),
+	fullname VARCHAR(20),
+	E_mail VARCHAR(30),
+	content VARCHAR(1024),
+    conditions ENUM('未處理', '處理中', '已完成') NOT NULL DEFAULT '未處理',
+	PRIMARY KEY (qa_id)
+	) ENGINE = INNODB;
+
 -- 新增kind計數
 CREATE TABLE kind_count (
     kind VARCHAR(50) PRIMARY KEY,

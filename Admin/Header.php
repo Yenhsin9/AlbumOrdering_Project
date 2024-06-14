@@ -18,6 +18,9 @@
                             <a href="manage.php" class="active">Home</a>
                         </li>
                         <li class="scroll-to-section">
+                            <a href="boardIndex.php" class="active">意見箱</a>
+                        </li>
+                        <li class="scroll-to-section">
                             <a href="memberIndex.php">會員管理</a>
                         </li>
                         <li class="scroll-to-section">

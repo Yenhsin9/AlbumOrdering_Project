@@ -122,19 +122,19 @@
             <form class="member-info" action="memberUpdate.php" method="post" onsubmit="return validateForm()">
                 <div class="info-row">
                     <label for="member_password">會員密碼：</label>
-                    <input type="text" id="member_password" name="member_password" placeholder="會員密碼" />
+                    <input type="text" id="member_password" name="member_password"  value="<?php echo htmlspecialchars($row['password']); ?>"/>
                 </div>
                 <div class="info-row">
                     <label for="fullname">會員姓名：</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="會員姓名" />
+                    <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($row['fullname']); ?>" />
                 </div>
                 <div class="info-row">
                     <label for="phone_number">電話號碼：</label>
-                    <input type="text" id="phone_number" name="phone_number" placeholder="電話號碼" />
+                    <input type="text" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($row['phone_number']); ?>" />
                 </div>
                 <div class="info-row">
                     <label for="E_mail">電子郵件：</label>
-                    <input type="e-mail" id="E_mail" name="E_mail" placeholder="E-mail" />
+                    <input type="e-mail" id="E_mail" name="E_mail" value="<?php echo htmlspecialchars($row['E_mail']); ?>" />
                 </div>
                 <input type="submit" value="確認" class="submit" />
             </form>
