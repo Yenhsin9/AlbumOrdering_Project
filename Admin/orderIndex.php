@@ -63,6 +63,7 @@
             <table style="width:100%" align="center" border=1>
                 <tr align="center">
                     <th>訂單狀態</th><th>訂單ID</th><th>會員ID</th><th>訂購日期</th><th>完成日期</th><th>訂購人</th><th>電話</th><th>E-mail</th><th>總金額</th>
+                    <th colspan="2">動作</th>
                 </tr>
                 <?php
                     if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -93,6 +94,8 @@
                                     echo "<td style='text-align: center;'>" . $row['phone_number'] . "</td>";
                                     echo "<td style='text-align: center;'>" . $row['E_mail'] . "</td>";
                                     echo "<td style='text-align: right;'>" . $row['total_price'] . "</td>";
+                                    echo "<td align='center'><a href='orderDoUpdate.php?order_id=" . $row["order_id"] . "'>修改</a></td>";
+                                    echo "<td align='center'><a href='orderDelete.php?order_id=" . $row["order_id"] . "'>刪除</a></td>";
                                     echo "</tr>";
                                 }
                             } 

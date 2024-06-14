@@ -1,16 +1,11 @@
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
 
     <title>MSMshop - Login Page</title>
 
@@ -18,108 +13,123 @@
     <link rel="stylesheet" href="assets/css/loginpage.css" />
 
     <script src="assets/js/login.js"></script>
-  </head>
 
-  <body>
+    <style>
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: calc(100% - 30px);
+            padding-right: 30px;
+        }
+        
+        .password-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
     <div class="system_name">
-      <h2>MSM Music Shop</h2>
+        <h2>MSM Music Shop</h2>
     </div>
 
     <div class="login_page">
-      <div id="container1">
-        <div class="login">
-          <h3>登入 Login</h3>
+        <div id="container1">
+            <div class="login">
+                <h3>登入 Login</h3>
 
-          <form action="loginUser.php" method="post">
-            <input
-              type="text"
-              id="username"
-              name="account"
-              placeholder="帳號"
-              required
-              onkeyup="this.value=this.value.replace(/\s+/g,'')"
-            />
-            <div class="tab"></div>
-            <input
-              type="text"
-              id="password"
-              name="password"
-              placeholder="密碼"
-              required
-              onkeyup="this.value=this.value.replace(/\s+/g,'')"
-            />
-            <div class="tab"></div>
-            <input
-              type="submit"
-              value="登入"
-              class="submit"
-            />
-          </form>
-
-          <h5 onclick="show_hide()">註冊帳號</h5>
+                <form action="loginUser.php" method="post">
+                    <input type="text" id="username" name="account" placeholder="帳號" required onkeyup="this.value=this.value.replace(/\s+/g,'')" />
+                    <div class="tab"></div>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="密碼" required onkeyup="this.value=this.value.replace(/\s+/g,'')" />
+                        <span class="toggle-password" onclick="togglePasswordVisibility()">
+                            <div class="thumb">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- <img src="crawler/downloaded_images/eye_icon.png" alt="" /> -->
+                            </div>
+                        </span>
+                    </div>
+                    <div class="tab"></div>
+                    <input type="submit" value="登入" class="submit" />
+                </form>
+                <h5 onclick="show_hide()">註冊帳號</h5>
+            </div>
+            <!-- login end-->
         </div>
-        <!-- login end-->
-      </div>
-      <!-- container1 end-->
+        <!-- container1 end-->
     </div>
     <!-- login_page end-->
 
     <div class="signup_page">
-      <div id="container2">
-        <div class="signup">
-          <h3>註冊 Sign Up</h3>
+        <div id="container2">
+            <div class="signup">
+                <h3>註冊 Sign Up</h3>
 
-          <form action="createUser.php" method="post">
-            <input
-              type="text"
-              id="fullname"
-              name="fullname"
-              placeholder="使用者全名"
-              required
-            />
-            <div class="tab"></div>
-            <input
-              type="text"
-              id="username2"
-              name="account"
-              placeholder="帳號"
-              required
-            />
-            <div class="tab"></div>
-            <input
-              type="text"
-              id="password2"
-              name="password"
-              placeholder="密碼"
-              required
-              pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
-              oninput="setCustomValidity('');"
-              oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');"
-            />
-            <div class="tab"></div>
-            <input
-              type="text"
-              id="comfirm_password"
-              name="comfirm_password"
-              placeholder="確認密碼"
-              required
-              oninput="setCustomValidity('');"
-              onchange="if(document.getElementById('password2').value != document.getElementById('comfirm_password').value){setCustomValidity('密碼不吻合');}"
-            />
-            <div class="tab"></div>
-            <input type="submit" value="註冊" class="submit" />
-          </form>
+                <form action="createUser.php" method="post">
+                    <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required />
+                    <div class="tab"></div>
+                    <input type="text" id="username2" name="account" placeholder="帳號" required />
+                    <div class="tab"></div>
+                    <input type="text" id="password2" name="password" placeholder="密碼" required pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$" oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英數至少六個字元');" />
+                    <div class="tab"></div>
+                    <input type="text" id="comfirm_password" name="comfirm_password" placeholder="確認密碼" required oninput="setCustomValidity('');" onchange="if(document.getElementById('password2').value != document.getElementById('comfirm_password').value){setCustomValidity('密碼不吻合');}"
+                    />
+                    <div class="tab"></div>
+                    <input type="submit" value="註冊" class="submit" />
+                </form>
 
-          <h5 onclick="show_hide()">登入帳號</h5>
+                <h5 onclick="show_hide()">登入帳號</h5>
+            </div>
+            <!-- signup end-->
         </div>
-        <!-- signup end-->
-      </div>
     </div>
     <!-- signup_page end-->
 
     <div id="copyright">
-      <h4>Copyright © 2018 RoseWang All rights reserved</h4>
-      <!--因為js，會跑版-->
+        <h4>Copyright © 2018 RoseWang All rights reserved</h4>
+        <!--因為js，會跑版-->
     </div>
-  </body>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var eyeIcon = document.querySelector(".fa-eye");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+
+        function show_hide() {
+            var loginPage = document.querySelector(".login_page");
+            var signupPage = document.querySelector(".signup_page");
+            loginPage.classList.toggle("hide");
+            signupPage.classList.toggle("hide");
+        }
+    </script>
+</body>
+
 </html>

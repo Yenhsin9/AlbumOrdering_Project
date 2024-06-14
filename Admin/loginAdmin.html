@@ -1,47 +1,89 @@
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<meta name="description" content />
-		<meta name="author" content />
-		<link
-			href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-			rel="stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content />
+    <meta name="author" content />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
 
-		<title>MSMshop- Admin Login Page</title>
+    <title>MSMshop- Admin Login Page</title>
 
-		<!-- Additional CSS Files -->
-		<link rel="stylesheet" href="../assets/css/loginpage.css" />
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../assets/css/loginpage.css" />
 
-		<script src="../assets/js/login.js"></script>
-	</head>
+    <style>
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: calc(100% - 30px);
+            padding-right: 30px;
+        }
+        
+        .password-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
 
-	<body>
-		<div class="system_name">
-			<h2>MSM Admin Login</h2>
-		</div>
+<body>
+    <div class="system_name">
+        <h2>MSM Admin Login</h2>
+    </div>
 
-		<div class="login_page">
-			<div id="container1">
-				<div class="login">
-					<h3>登入 Login</h3>
+    <div class="login_page">
+        <div id="container1">
+            <div class="login">
+                <h3>登入 Login</h3>
 
-					<form action="loginAdminUser.php" method="post">
-						<input type="text" id="username" name="account" placeholder="帳號" required
-							onkeyup="this.value=this.value.replace(/\s+/g,'')" />
-						<div class="tab"></div>
-						<input type="text" id="password" name="password" placeholder="密碼" required
-							onkeyup="this.value=this.value.replace(/\s+/g,'')" />
-						<div class="tab"></div>
-						<input type="submit" value="登入" class="submit" />
-					</form>
-				</div>
-				<!-- login end-->
-			</div>
-			<!-- container1 end-->
-		</div>
-		<!-- login_page end-->
-	</body>
+                <form action="loginAdminUser.php" method="post">
+                    <input type="text" id="username" name="account" placeholder="帳號" required onkeyup="this.value=this.value.replace(/\s+/g,'')" />
+                    <div class="tab"></div>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="密碼" required onkeyup="this.value=this.value.replace(/\s+/g,'')" />
+                        <span class="toggle-password" onclick="togglePasswordVisibility()">
+                            <div class="thumb">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="tab"></div>
+                    <input type="submit" value="登入" class="submit" />
+                </form>
+            </div>
+            <!-- login end-->
+        </div>
+        <!-- container1 end-->
+    </div>
+    <!-- login_page end-->
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+
 </html>

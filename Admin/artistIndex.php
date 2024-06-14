@@ -78,6 +78,7 @@
                                     echo "<td style='text-align: center;'>" . $row['artist_name'] . "</td>";
                                     echo "<td style='text-align: center;'>" . $row['company'] . "</td>";
                                     echo "<td align='center'><a href='artistDoupdate.php?artist_id=" . $row["artist_id"] . "'>修改</a></td>";
+                                    echo "<td align='center'><a href='artistDelete.php?artist_id=" . $row["artist_id"] . "'>刪除</a></td>";
                                     echo "</tr>";
                                 }
                             } 

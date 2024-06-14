@@ -7,10 +7,21 @@
     // 匯入資料庫連接
     include 'db_connection.php';
     if ($_FILES['new_img']['error'] === UPLOAD_ERR_OK) {
-        $tmp_name = $_FILES['new_img']['tmp_name'];
+        $current_dir = getcwd();
+        // echo "當前目錄: " . $current_dir . "<br>";
+
         $target_dir = '../crawler/downloaded_images/';
-        $target_file = $target_dir . basename($_FILES['new_img']['name']);
+        $absolute_target_dir = realpath($current_dir . '/' . $target_dir);
+        // echo "目標目錄的絕對路徑: " . $absolute_target_dir . "<br>";
+        
+        $tmp_name = $_FILES['new_img']['tmp_name'];
+        $target_file = $absolute_target_dir . '/' . basename($_FILES['new_img']['name']);
         $img = basename($_FILES['new_img']['name']);
+
+        // 印出上傳檔案的臨時路徑和目標路徑
+        echo "上傳檔案的臨時路徑: " . $tmp_name . "<br>";
+        echo "上傳檔案的目標路徑: " . $target_file . "<br>";
+
         if (move_uploaded_file($tmp_name, $target_file)) {
             echo "檔案已成功上傳.";
         } else {
@@ -36,7 +47,7 @@
             return $postValue;
         } else {
             // 如果 POST 資料不存在或為空，則保持資料庫中的原值不變
-            return mysqli_real_escape_string(isset($rowValue) ? $rowValue : '');
+            return $rowValue;
         }
     }
 
